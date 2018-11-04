@@ -1,0 +1,11 @@
+* { touch-action: none; } 
+.mui-bar-tab .mui-tab-item.mui-active{
+	background: #DDD;
+}
+.mui-tab-saishi span{
+	color: #F00;
+}
+.mui-col-xs-20
+{
+    width: 20%;
+}

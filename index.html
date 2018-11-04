@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">奔跑吧！兄弟</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active mui-tab-saishi" href="#saishiTab">
+				<span class="mui-icon iconfont icon-saishi"></span>
+				<span class="mui-tab-label">赛事</span>
+			</a>
+			<a class="mui-tab-item" href="#timeTab">
+				<span class="mui-icon mui-icon-phone"></span>
+				<span class="mui-tab-label">计时</span>
+			</a>
+			<a class="mui-tab-item" href="#personTab">
+				<span class="mui-icon mui-icon-person"></span>
+				<span class="mui-tab-label">个人中心</span>
+			</a>
+			<a class="mui-tab-item" href="#gearTab">
+				<span class="mui-icon mui-icon-gear"></span>
+				<span class="mui-tab-label">设置</span>
+			</a>
+		</nav>
+		<div class="mui-content">
+			<div id="saishiTab" class="mui-control-content mui-active">
+				<div id="segmentedControl" class="mui-segmented-control">
+					<a class="mui-control-item mui-active" href="#timeStart">起点</a>
+					<a class="mui-control-item" href="#timeHalf">半程</a>
+					<a class="mui-control-item" href="#timeEnd">终点</a>
+				</div>
+				<div class="mui-content-padded">
+					<div id="timeStart" class="mui-control-content mui-active mui-slider">
+						<!--选项卡标题区-->
+						<div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+						  <a class="mui-control-item" href="#timeStick1">第一棒</a>
+						  <a class="mui-control-item" href="#timeStick2">第二棒</a>
+						  <a class="mui-control-item" href="#timeStick3">第三棒</a>
+						  <a class="mui-control-item" href="#timeStick4">第四棒</a>
+						  <a class="mui-control-item" href="#timeStick5">第五棒</a>
+						</div>
+						<div class="mui-slider-progress-bar mui-col-xs-20"></div>
+						<div class="mui-slider-group">
+						  <!--第一个选项卡内容区-->
+						  <div id="timeStick1" class="mui-slider-item mui-control-content mui-active">
+							<ul class="mui-table-view">
+							  <li class="mui-table-view-cell">第一组：1号<button class="mui-btn mui-btn-outlined">已到达</button></li>
+							  <li class="mui-table-view-cell">第二组：2号<button class="mui-btn mui-btn-primary mui-btn-outlined">到达</button></li>
+							  <li class="mui-table-view-cell">第三组：3号<button class="mui-btn">到达</button></li>
+							  <li class="mui-table-view-cell">第四组：4号<button class="mui-btn mui-btn-primary">到达</button></li>
+							  <li class="mui-table-view-cell">第五组：5号<button class="mui-btn mui-btn-primary">到达</button></li>
+							  <li class="mui-table-view-cell">第六组：6号<button class="mui-btn mui-btn-primary">到达</button></li>
+							  <li class="mui-table-view-cell">第七组：7号<button class="mui-btn mui-btn-primary">到达</button></li>
+							  <li class="mui-table-view-cell">第八组：8号<button class="mui-btn mui-btn-primary">到达</button></li>
+							  <li class="mui-table-view-cell">第九组：9号<button class="mui-btn mui-btn-primary">到达</button></li>
+							  <li class="mui-table-view-cell">第十组：10号<button class="mui-btn mui-btn-primary">到达</button></li>
+							  <li class="mui-table-view-cell">第十一组：11号<button class="mui-btn mui-btn-primary">到达</button></li>
+							  <li class="mui-table-view-cell">第十二组：12号<button class="mui-btn mui-btn-primary">到达</button></li>
+							  <li class="mui-table-view-cell">第十三组：13号<button class="mui-btn mui-btn-primary">到达</button></li>
+							  <li class="mui-table-view-cell">第十四组：14号<button class="mui-btn mui-btn-primary">到达</button></li>
+							  <li class="mui-table-view-cell">第十五组：15号<button class="mui-btn mui-btn-primary">到达</button></li>
+							  <li class="mui-table-view-cell">第十六组：16号<button class="mui-btn mui-btn-primary">到达</button></li>
+							  <li class="mui-table-view-cell">第十七组：17号<button class="mui-btn mui-btn-primary">到达</button></li>
+							</ul>
+						  </div>
+						  <!--第二个选项卡内容区，页面加载时为空-->
+						  <div id="timeStick2" class="mui-slider-item mui-control-content">2</div>
+						  <!--第三个选项卡内容区，页面加载时为空-->
+						  <div id="timeStick3" class="mui-slider-item mui-control-content">3</div>
+						  <!--第三个选项卡内容区，页面加载时为空-->
+						  <div id="timeStick4" class="mui-slider-item mui-control-content">4</div>
+						  <!--第三个选项卡内容区，页面加载时为空-->
+						  <div id="timeStick5" class="mui-slider-item mui-control-content">5</div>
+						</div>
+					</div>
+					<div id="timeHalf" class="mui-control-content">
+						半程页面
+					</div>
+					<div id="timeEnd" class="mui-control-content">
+						终点页面
+					</div>
+				</div>
+			</div>
+			<div id="timeTab" class="mui-control-content">
+				这是计时页面
+			</div>
+			<div id="personTab" class="mui-control-content">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-divider">基本信息</li>
+					<li class="mui-table-view-cell">姓名：宋策</li>
+					<li class="mui-table-view-cell">性别：男</li>
+					<li class="mui-table-view-cell">分组：第四组</li>
+					<li class="mui-table-view-cell">棒次：第一棒</li>
+					<li class="mui-table-view-divider">两行列表</li>
+					<li class="mui-table-view-cell"><span class="mui-ellipsis-2">我的内容比较多，但也不会超过两行，因为加了.mui-ellipsis-2,mui会自动截断，变成省略号</span>
+					</li>
+					<li class="mui-table-view-cell"><span class="mui-ellipsis-2">我的内容比较多，但也不会超过两行，因为加了.mui-ellipsis-2,mui会自动截断，变成省略号</span>
+					</li>
+					<li class="mui-table-view-cell"><span class="mui-ellipsis-2">我的内容比较多，但也不会超过两行，因为加了.mui-ellipsis-2,mui会自动截断，变成省略号</span>
+					</li>
+				</ul>
+			</div>
+			<div id="gearTab" class="mui-control-content">
+				这是设置页面
+			</div>
+		</div>
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			// 初始化单页的区域滚动
+			// mui('.mui-scroll-wrapper').scroll();
+//            
+//             //自定义事件，模拟点击“首页选项卡”
+//             document.addEventListener('gohome', function() {
+//                 var defaultTab = document.getElementById("defaultTab");
+//                 //模拟首页点击
+//                 mui.trigger(defaultTab, 'tap');
+//                 //切换选项卡高亮
+//                 var current = document.querySelector(".mui-bar-tab>.mui-tab-item.mui-active");
+//                 if (defaultTab !== current) {
+//                     current.classList.remove('mui-active');
+//                     defaultTab.classList.add('mui-active');
+//                 }
+//             });
+		</script>
+	</body>
+
+</html>
