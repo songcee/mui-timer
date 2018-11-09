@@ -12,7 +12,7 @@
 
 	<body>
 		<header class="mui-bar mui-bar-nav">
-			<h1 class="mui-title">奔跑吧！兄弟</h1>
+			<h1 class="mui-title">第三届同花顺接力跑</h1>
 		</header>
 		<nav class="mui-bar mui-bar-tab">
 			<a class="mui-tab-item mui-active mui-tab-saishi" href="#saishiTab">
@@ -33,11 +33,74 @@
 			</a>
 		</nav>
 		<div class="mui-content">
-			<div id="saishiTab" class="mui-control-content mui-active">
+			<div id="saishiTab" class="mui-control-content">
+				<ul class="mui-table-view saishi-ul">
+					<li class="mui-table-view-cell saishi-item">
+						<span>第一组</span>
+						<ul class="saishi-timeline">
+							<li class="saishi-timeline-item">
+								<span class="mui-badge mui-badge-primary start-icon">起</span>
+								<span class="iconfont icon-qizi"></span>
+								<span class="iconfont icon-paobu"></span>
+							</li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+						</ul>
+					</li>
+					<li class="mui-table-view-cell saishi-item">
+						<span>第二组</span>
+						<ul class="saishi-timeline">
+							<li class="saishi-timeline-item">
+								<span class="mui-badge mui-badge-primary start-icon">起</span>
+								<span class="iconfont icon-qizi"></span>
+								<span class="iconfont icon-paobu"></span>
+							</li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+						</ul>
+					</li>
+					<li class="mui-table-view-cell saishi-item">
+						<span>第三组</span>
+						<ul class="saishi-timeline">
+							<li class="saishi-timeline-item">
+								<span class="mui-badge mui-badge-primary start-icon">起</span>
+								<span class="iconfont icon-qizi"></span>
+								<span class="iconfont icon-paobu"></span>
+							</li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+							<li class="saishi-timeline-item"></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div id="timeTab" class="mui-control-content ">
+				<h4 class="stopwatch-title">当前比赛时间</h4>
+				<h1 class="stopwatch-item"><span id="timeTabHour">10</span>:<span id="timeTabMinute">20</span>:<span id="timeTabSecond">58</span></h1>
+				<h2 class="stopwatch-item" style="display: none;">尚未开始</h2>
 				<div id="segmentedControl" class="mui-segmented-control">
 					<a class="mui-control-item mui-active" href="#timeStart">起点</a>
 					<a class="mui-control-item" href="#timeHalf">半程</a>
-					<a class="mui-control-item" href="#timeEnd">终点</a>
 				</div>
 				<div class="mui-content-padded">
 					<div id="timeStart" class="mui-control-content mui-active mui-slider">
@@ -86,14 +149,10 @@
 					<div id="timeHalf" class="mui-control-content">
 						半程页面
 					</div>
-					<div id="timeEnd" class="mui-control-content">
-						终点页面
-					</div>
 				</div>
 			</div>
-			<div id="timeTab" class="mui-control-content">
-				这是计时页面
-			</div>
+			
+			
 			<div id="personTab" class="mui-control-content">
 				<ul class="mui-table-view">
 					<li class="mui-table-view-divider">基本信息</li>
@@ -101,22 +160,129 @@
 					<li class="mui-table-view-cell">性别：男</li>
 					<li class="mui-table-view-cell">分组：第四组</li>
 					<li class="mui-table-view-cell">棒次：第一棒</li>
-					<li class="mui-table-view-divider">两行列表</li>
-					<li class="mui-table-view-cell"><span class="mui-ellipsis-2">我的内容比较多，但也不会超过两行，因为加了.mui-ellipsis-2,mui会自动截断，变成省略号</span>
-					</li>
-					<li class="mui-table-view-cell"><span class="mui-ellipsis-2">我的内容比较多，但也不会超过两行，因为加了.mui-ellipsis-2,mui会自动截断，变成省略号</span>
-					</li>
-					<li class="mui-table-view-cell"><span class="mui-ellipsis-2">我的内容比较多，但也不会超过两行，因为加了.mui-ellipsis-2,mui会自动截断，变成省略号</span>
+					<li class="mui-table-view-divider">赛况详情</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-content">
+							<ul class="timeline-ul">
+								<li class="timeline-li done-item">
+									<span class="mui-icon icon-circle"></span>
+									<h4>第一棒：黄振裕【0009】</h4>
+									<ul class="timeline-item-ul">
+										<li class="">
+											<p>起点时间：00:00:00</p>
+										</li>
+										<li class="">
+											<p>折返时间：00:00:00</p>
+										</li>
+										<li class="">
+											<p>终点时间：00:00:00</p>
+										</li>
+										<li class="">
+											<p>最终成绩：00:00:00</p>
+										</li>
+										
+									</ul>
+								</li>
+								<li class="timeline-li">
+									<span class="mui-icon icon-circle"></span>
+									<h4>第二棒：黄振裕【0009】</h4>
+									<ul class="timeline-item-ul">
+										<li class="timeline-item-doing">
+											<p>进行中...</p>
+										</li>
+									</ul>
+								</li>
+								<li class="timeline-li">
+									<span class="mui-icon icon-circle"></span>
+									<h4>第三棒：黄振裕【0019】</h4>
+									<ul class="timeline-item-ul">
+										<li class="timeline-item-wait">
+											<p>未开始</p>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
 					</li>
 				</ul>
 			</div>
-			<div id="gearTab" class="mui-control-content">
-				这是设置页面
+			<!-- 设置页面 -->
+			<div id="gearTab" class="mui-control-content mui-active">
+				<div class="mui-content" id="runnerTable">
+					<table cellspacing="" cellpadding="" class="runner-table fix-table">
+						<tr>
+							<th width="90px">分组</th>
+							<th>第一棒</th>
+							<th>第二棒</th>
+							<th>第三棒</th>
+							<th>第四棒</th>
+							<th>第五棒</th>
+						</tr>
+					</table>
+					<table border="" cellspacing="" cellpadding="" class="runner-table">
+						<tr>
+							<th width="90px">分组</th>
+							<th>第一棒</th>
+							<th>第二棒</th>
+							<th>第三棒</th>
+							<th>第四棒</th>
+							<th>第五棒</th>
+						</tr>
+						<tr>
+							<td>第一组</td>
+							<td>张三</td>
+							<td>李四</td>
+							<td>王五</td>
+							<td>赵六</td>
+							<td>薛七</td>
+						</tr>
+						<tr>
+							<td>第一组</td>
+							<td>张三</td>
+							<td>李四</td>
+							<td>王五</td>
+							<td>赵六</td>
+							<td>薛七</td>
+						</tr><tr>
+							<td>第一组</td>
+							<td>张三</td>
+							<td>李四</td>
+							<td>王五</td>
+							<td>赵六</td>
+							<td>薛七</td>
+						</tr>
+					</table>
+				</div>
+				<div id="popover" class="mui-popover hover-table-menu">
+					<form class="mui-input-group change-runner-detail">
+						<div class="mui-input-row">
+								<label>姓名</label>
+						<input type="text" class="mui-input-clear" placeholder="请输入用户名">
+						</div>
+						<div class="mui-input-row">
+								<label>性别</label>
+								<button type="button" class="mui-btn btn-sex">男</button>
+								<button type="button" class="mui-btn mui-btn-primary btn-sex">女</button>
+						</div>
+						<div class="mui-input-row">
+								<label>身份</label>
+								<button type="button" class="mui-btn btn-sex">男</button>
+								<button type="button" class="mui-btn mui-btn-primary btn-sex">女</button>
+						</div>
+						<div class="mui-button-row">
+								<button type="button" class="mui-btn mui-btn-primary" >确认</button>
+								<button type="button" class="mui-btn mui-btn-danger" >取消</button>
+						</div>
+				</form>
+				</div>
 			</div>
 		</div>
 		<script src="js/mui.js"></script>
 		<script type="text/javascript">
 			mui.init()
+			mui('#runnerTable').on('click','td',function(){
+					mui('#popover').popover('show')
+			})
 			// 初始化单页的区域滚动
 			// mui('.mui-scroll-wrapper').scroll();
 //            

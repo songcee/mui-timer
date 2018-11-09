@@ -1,11 +1,160 @@
-* { touch-action: none; } 
-.mui-bar-tab .mui-tab-item.mui-active{
+* {
+	touch-action: none;
+}
+
+.mui-bar-tab .mui-tab-item.mui-active {
 	background: #DDD;
 }
-.mui-tab-saishi span{
+
+.mui-tab-saishi span {
 	color: #F00;
 }
-.mui-col-xs-20
-{
-    width: 20%;
+
+.mui-col-xs-20 {
+	width: 20%;
+}
+/**
+ * 赛事页面
+ */
+.saishi-ul{
+	position: relative;
+}
+.saishi-item{
+	position: relative;
+}
+.saishi-timeline{
+	position: absolute;
+	width:400px;
+	left:100px;
+	margin:0;
+	padding:0;
+}
+.saishi-timeline-item{
+	float:left;
+	width:10%;
+	list-style: none;
+	border-bottom: 1px solid #A52A2A;
+	border-left:2px solid #A52A2A;
+	height:5px;
+}
+.saishi-timeline-item:nth-child(even){
+	border-left:0px solid #A52A2A;
+}
+.icon-qizi{
+	position: absolute;
+	right:-14px;
+	font-size: 20px;;
+	top: -18px;
+	color:#CF2D28;
+}
+.start-icon{
+	position: absolute;
+	top:-20px;
+	left:-10px;
+}
+.icon-paobu{
+	position: absolute;
+	left:-10px;
+	top:-20px;
+	transition: all 3s linear;
+}
+
+/**
+ * 计时页面
+ */
+.stopwatch-title {
+	text-align: center;
+	font-weight: normal;
+}
+
+.stopwatch-item {
+	text-align: center;
+	margin-top: 10px;
+}
+
+.timeline-ul {
+	list-style: none;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+
+.timeline-ul .timeline-li {
+	float: left;
+	width: 95%;
+	margin-left: 5%;
+	min-height: 6em;
+	border-left: 1px dashed brown;
+	position: relative;
+	padding-left: 10px;
+}
+
+.timeline-ul .done-item {
+	border-left: 1px solid #FF5053;
+}
+
+.icon-circle {
+	width: 20px;
+	height: 20px;
+	background: brown;
+	border-radius: 50%;
+	position: absolute;
+	left: -10px;
+}
+.done-item .icon-circle{
+	background: #FF5053;
+}
+
+.timeline-ul .timeline-item-ul {
+	list-style: none;
+	position: absolute;
+	left: 180px;
+	top: 3px;
+}
+
+.timeline-ul .timeline-item-doing p {
+	color: #A52A2A;
+}
+
+.timeline-ul .timeline-item-wait p {
+	color: #999999;
+}
+
+/**
+ * 分组页面
+ */
+
+.runner-table{
+	width:96%;
+	margin:10px auto;
+	background: #fdfdfd;
+	border:1px solid lightskyblue;
+	line-height: 30px;
+	box-sizing: border-box;
+}
+.fix-table{
+	position: fixed;
+	top: 43px;
+	left:2%;
+	z-index: 100;
+	height: 10px;
+	overflow: hidden;
+	border-bottom: transparent;
+}
+.fix-table th{
+	border: 1px solid lightskyblue;
+}
+.runner-table td{
+	text-align: center;
+}
+.runner-table tr:nth-child(even){
+	background:#f9f9f9;
+}
+.hover-table-menu{
+	left:50%;
+	margin-left:-140px;
+}
+.change-runner-detail .btn-sex{
+	float: left;
+	margin-left: 10px;
 }
