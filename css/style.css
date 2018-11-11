@@ -6,7 +6,7 @@
 	background: #DDD;
 }
 
-.mui-tab-saishi span {
+.mui-tab-item.mui-active span {
 	color: #F00;
 }
 
@@ -21,10 +21,11 @@
 }
 .saishi-item{
 	position: relative;
+	line-height: 32px;
 }
 .saishi-timeline{
 	position: absolute;
-	width:400px;
+	width:calc(100% - 120px);
 	left:100px;
 	margin:0;
 	padding:0;
@@ -43,7 +44,7 @@
 .icon-qizi{
 	position: absolute;
 	right:-14px;
-	font-size: 20px;;
+	font-size: 20px;
 	top: -18px;
 	color:#CF2D28;
 }
@@ -57,6 +58,15 @@
 	left:-10px;
 	top:-20px;
 	transition: all 3s linear;
+}
+.icon-paobu-name{
+	position: absolute;
+	left: -20px;
+	top: -45px;
+	font-size: 14px;
+	display: inline-block;
+  width: 100px;
+}
 }
 
 /**
@@ -143,9 +153,17 @@
 }
 .fix-table th{
 	border: 1px solid lightskyblue;
+	
 }
-.runner-table td{
+.runner-table td,
+.runner-table th{
 	text-align: center;
+}
+.runner-table .whole-journey-td{
+	background: #F0cD4E;
+}
+.runner-table .female-runner-td{
+	background: #bA9Df9;
 }
 .runner-table tr:nth-child(even){
 	background:#f9f9f9;
@@ -153,6 +171,8 @@
 .hover-table-menu{
 	left:50%;
 	margin-left:-140px;
+	top: 20%;
+  position: fixed;
 }
 .change-runner-detail .btn-sex{
 	float: left;
