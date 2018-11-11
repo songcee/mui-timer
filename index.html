@@ -96,8 +96,11 @@
 			</div>
 			<div id="timeTab" class="mui-control-content ">
 				<h4 class="stopwatch-title">当前比赛时间</h4>
-				<h1 class="stopwatch-item"><span id="timeTabHour">10</span>:<span id="timeTabMinute">20</span>:<span id="timeTabSecond">58</span></h1>
-				<h2 class="stopwatch-item" style="display: none;">尚未开始</h2>
+				<h1 class="stopwatch-item" style="display: none;"><span id="timeTabHour">10</span>:<span id="timeTabMinute">20</span>:<span id="timeTabSecond">58</span></h1>
+				<h2 class="stopwatch-item">尚未开始</h2>
+				<div class="match-start" id="match_start">开始</div>
+				<div class="match-restart" id="match_restart">重新开始</div>
+				<div class="match-end" id="match_end">结束</div>
 				<div id="segmentedControl" class="mui-segmented-control">
 					<a class="mui-control-item mui-active" href="#timeStart">起点</a>
 					<a class="mui-control-item" href="#timeHalf">半程</a>
@@ -106,35 +109,49 @@
 					<div id="timeStart" class="mui-control-content mui-active mui-slider">
 						<!--选项卡标题区-->
 						<div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-						  <a class="mui-control-item" href="#timeStick1">第一棒</a>
+						  <a class="mui-control-item mui-active" href="#timeStick1">第一棒</a>
 						  <a class="mui-control-item" href="#timeStick2">第二棒</a>
 						  <a class="mui-control-item" href="#timeStick3">第三棒</a>
 						  <a class="mui-control-item" href="#timeStick4">第四棒</a>
 						  <a class="mui-control-item" href="#timeStick5">第五棒</a>
 						</div>
-						<div class="mui-slider-progress-bar mui-col-xs-20"></div>
-						<div class="mui-slider-group">
+						<div class="mui-slider-group" id="timeGroup">
 						  <!--第一个选项卡内容区-->
 						  <div id="timeStick1" class="mui-slider-item mui-control-content mui-active">
-							<ul class="mui-table-view">
-							  <li class="mui-table-view-cell">第一组：1号<button class="mui-btn mui-btn-outlined">已到达</button></li>
-							  <li class="mui-table-view-cell">第二组：2号<button class="mui-btn mui-btn-primary mui-btn-outlined">到达</button></li>
-							  <li class="mui-table-view-cell">第三组：3号<button class="mui-btn">到达</button></li>
-							  <li class="mui-table-view-cell">第四组：4号<button class="mui-btn mui-btn-primary">到达</button></li>
-							  <li class="mui-table-view-cell">第五组：5号<button class="mui-btn mui-btn-primary">到达</button></li>
-							  <li class="mui-table-view-cell">第六组：6号<button class="mui-btn mui-btn-primary">到达</button></li>
-							  <li class="mui-table-view-cell">第七组：7号<button class="mui-btn mui-btn-primary">到达</button></li>
-							  <li class="mui-table-view-cell">第八组：8号<button class="mui-btn mui-btn-primary">到达</button></li>
-							  <li class="mui-table-view-cell">第九组：9号<button class="mui-btn mui-btn-primary">到达</button></li>
-							  <li class="mui-table-view-cell">第十组：10号<button class="mui-btn mui-btn-primary">到达</button></li>
-							  <li class="mui-table-view-cell">第十一组：11号<button class="mui-btn mui-btn-primary">到达</button></li>
-							  <li class="mui-table-view-cell">第十二组：12号<button class="mui-btn mui-btn-primary">到达</button></li>
-							  <li class="mui-table-view-cell">第十三组：13号<button class="mui-btn mui-btn-primary">到达</button></li>
-							  <li class="mui-table-view-cell">第十四组：14号<button class="mui-btn mui-btn-primary">到达</button></li>
-							  <li class="mui-table-view-cell">第十五组：15号<button class="mui-btn mui-btn-primary">到达</button></li>
-							  <li class="mui-table-view-cell">第十六组：16号<button class="mui-btn mui-btn-primary">到达</button></li>
-							  <li class="mui-table-view-cell">第十七组：17号<button class="mui-btn mui-btn-primary">到达</button></li>
-							</ul>
+								<div class="mui-content">
+										<div class="mui-row time-table-tr">
+												<div class="mui-col-sm-3 mui-col-xs-12">第一组</div>
+												<div class="mui-col-sm-3 mui-col-xs-12 tar">10:12:34</div>
+												<div class="mui-col-sm-6 mui-col-xs-12 tar">
+													1号
+													<button class="mui-btn mui-btn-primary vam ml15" data="1">到达</button>
+												</div>
+										</div>
+										<div class="mui-row time-table-tr">
+												<div class="mui-col-sm-3 mui-col-xs-12">第二组</div>
+												<div class="mui-col-sm-3 mui-col-xs-12 tar">10:12:34</div>
+												<div class="mui-col-sm-6 mui-col-xs-12 tar">
+													2号
+													<button class="mui-btn mui-btn-primary vam ml15" data="2">到达</button>
+												</div>
+										</div>
+										<div class="mui-row time-table-tr">
+												<div class="mui-col-sm-3 mui-col-xs-12">第三组</div>
+												<div class="mui-col-sm-3 mui-col-xs-12 tar">10:12:34</div>
+												<div class="mui-col-sm-6 mui-col-xs-12 tar">
+													3号
+													<button class="mui-btn mui-btn-primary vam ml15" data="3">到达</button>
+												</div>
+										</div>
+										<div class="mui-row time-table-tr">
+												<div class="mui-col-sm-3 mui-col-xs-12">第四组</div>
+												<div class="mui-col-sm-3 mui-col-xs-12 tar">10:12:34</div>
+												<div class="mui-col-sm-6 mui-col-xs-12 tar">
+													4号
+													<button class="mui-btn mui-btn-primary vam ml15" data="4">到达</button>
+												</div>
+										</div>
+								</div>
 						  </div>
 						  <!--第二个选项卡内容区，页面加载时为空-->
 						  <div id="timeStick2" class="mui-slider-item mui-control-content">2</div>
@@ -273,11 +290,12 @@
 								<button type="button" class="mui-btn mui-btn-primary" >确认</button>
 								<button type="button" class="mui-btn mui-btn-danger" >取消</button>
 						</div>
-				</form>
+					</form>
 				</div>
 			</div>
 		</div>
 		<script src="js/mui.js"></script>
+		<script src="js/main.js"></script>
 		<script type="text/javascript">
 			mui.init()
 			mui('#runnerTable').on('click','td',function(){
