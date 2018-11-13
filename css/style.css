@@ -2,6 +2,22 @@
 	touch-action: none;
 }
 
+.tar{
+	text-align: right;
+}
+
+.tac{
+	text-align: center;
+}
+
+.vam{
+	vertical-align: middle;
+}
+
+.ml15{
+	margin-left: 15px;
+}
+
 .mui-bar-tab .mui-tab-item.mui-active {
 	background: #DDD;
 }
@@ -72,6 +88,40 @@
 /**
  * 计时页面
  */
+.match-btn{
+	display: table-cell;
+    overflow: hidden;
+    width: 30px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.match-btn-text{
+	font-size: 11px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.match-start{
+	position: absolute;
+	left: 10px;
+	top: 10px;
+}
+.match-restart{
+	position: absolute;
+	left: 10px;
+	top: 10px;
+}
+.match-end{
+	position: absolute;	
+	right: 10px;
+	top: 10px;
+}
+.mui-slider .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+	border-bottom: 2px solid #007aff;
+}
 .stopwatch-title {
 	text-align: center;
 	font-weight: normal;
@@ -82,6 +132,38 @@
 	margin-top: 10px;
 }
 
+.time-table-tr {
+	position: relative;
+    overflow: hidden;
+    padding: 0 15px;
+	height: 43px;
+	line-height: 43px;
+	background: #fff;
+	border-bottom: 1px solid #c8c7cc;
+    -webkit-touch-callout: none;
+}
+
+.mui-col-sm-3 {
+    width: 25%;
+}
+
+.mui-col-sm-6 {
+    width: 50%;
+}
+
+#timeGroup .mui-btn-outlined{
+	margin-left: 1px;
+}
+
+.change-time-popover{
+	left: 50%;
+	top: 50%;
+	margin: -40px 0 0 -140px;
+}
+
+/* 
+ * 个人中心 
+ */
 .timeline-ul {
 	list-style: none;
 	overflow: hidden;
@@ -96,7 +178,7 @@
 	min-height: 6em;
 	border-left: 1px dashed brown;
 	position: relative;
-	padding-left: 10px;
+	padding-left: 15px;
 }
 
 .timeline-ul .done-item {
@@ -104,12 +186,13 @@
 }
 
 .icon-circle {
-	width: 20px;
-	height: 20px;
+	width: 16px;
+	height: 16px;
 	background: brown;
 	border-radius: 50%;
 	position: absolute;
-	left: -10px;
+	left: -9px;
+	top: 5px;
 }
 .done-item .icon-circle{
 	background: #FF5053;
@@ -117,9 +200,7 @@
 
 .timeline-ul .timeline-item-ul {
 	list-style: none;
-	position: absolute;
-	left: 180px;
-	top: 3px;
+	padding-left: 20px;;
 }
 
 .timeline-ul .timeline-item-doing p {

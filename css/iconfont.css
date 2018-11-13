@@ -14,7 +14,7 @@
 
 .icon-qizi:before { content: "\e732"; }
 
-.icon-fenlei-saishi:before { content: "\e611"; }
+.icon-saishi:before { content: "\e611"; }
 
 .icon-paobu:before { content: "\e61c"; }
 
@@ -22,6 +22,6 @@
 
 .icon-jieshu:before { content: "\e6ec"; }
 
-.icon-zhongzhi:before { content: "\e612"; }
+.icon-chongzhi:before { content: "\e612"; }
 
 .icon-kaishi:before { content: "\e613"; }
