@@ -98,9 +98,15 @@
 				<h4 class="stopwatch-title">当前比赛时间</h4>
 				<h1 class="stopwatch-item" style="display: none;"><span id="timeTabHour">10</span>:<span id="timeTabMinute">20</span>:<span id="timeTabSecond">58</span></h1>
 				<h2 class="stopwatch-item">尚未开始</h2>
-				<div class="match-start" id="match_start">开始</div>
-				<div class="match-restart" id="match_restart">重新开始</div>
-				<div class="match-end" id="match_end">结束</div>
+				<div class="match-start match-btn" id="match_start">
+					<span class="mui-icon iconfont icon-kaishi"></span><span class="match-btn-text">开始</span>
+				</div>
+				<div class="match-restart match-btn" id="match_restart">
+					<span class="mui-icon iconfont icon-chongzhi"></span><span class="match-btn-text">重置</span>
+				</div>
+				<div class="match-end match-btn" id="match_end">
+					<span class="mui-icon iconfont icon-jieshu"></span><span class="match-btn-text">结束</span>
+				</div>
 				<div id="segmentedControl" class="mui-segmented-control">
 					<a class="mui-control-item mui-active" href="#timeStart">起点</a>
 					<a class="mui-control-item" href="#timeHalf">半程</a>

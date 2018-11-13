@@ -78,21 +78,36 @@
 /**
  * 计时页面
  */
-
+.match-btn{
+	display: table-cell;
+    overflow: hidden;
+    width: 30px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.match-btn-text{
+	font-size: 11px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .match-start{
 	position: absolute;
 	left: 10px;
-	top: 40px;
+	top: 10px;
 }
 .match-restart{
 	position: absolute;
 	left: 10px;
-	top: 40px;
+	top: 10px;
 }
 .match-end{
 	position: absolute;	
 	right: 10px;
-	top: 40px;
+	top: 10px;
 }
 .mui-slider .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
 	border-bottom: 2px solid #007aff;
