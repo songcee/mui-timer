@@ -11,8 +11,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-saishi:before { content: "\e611"; }
+
+.icon-qizi:before { content: "\e732"; }
+
+.icon-fenlei-saishi:before { content: "\e611"; }
 
 .icon-paobu:before { content: "\e61c"; }
 
-.icon-qizi:before { content: "\e732"; }
+.icon-shuaxin:before { content: "\e627"; }
+
+.icon-jieshu:before { content: "\e6ec"; }
+
+.icon-zhongzhi:before { content: "\e612"; }
+
+.icon-kaishi:before { content: "\e613"; }
