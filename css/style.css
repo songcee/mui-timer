@@ -32,6 +32,9 @@
 /**
  * 赛事页面
  */
+.icon-saishi{
+	color: red;
+}
 .saishi-ul{
 	position: relative;
 }
@@ -164,6 +167,10 @@
 /* 
  * 个人中心 
  */
+.person-shuaxin{
+	float: right;
+	margin-right: 10px;;
+}
 .timeline-ul {
 	list-style: none;
 	overflow: hidden;

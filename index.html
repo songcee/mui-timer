@@ -108,15 +108,15 @@
 							</div>
 			<div id="timeTab" class="mui-control-content ">
 				<h4 class="stopwatch-title">当前比赛时间</h4>
-				<h1 class="stopwatch-item" style="display: none;"><span id="timeTabHour">10</span>:<span id="timeTabMinute">20</span>:<span id="timeTabSecond">58</span></h1>
-				<h2 class="stopwatch-item">尚未开始</h2>
+				<h1 class="stopwatch-item" id="stopwatch_start" style="display: none;"><span id="timeTabHour">10</span>:<span id="timeTabMinute">20</span>:<span id="timeTabSecond">58</span></h1>
+				<h2 class="stopwatch-item" id="stopwatch_no_start">尚未开始</h2>
 				<div class="match-start match-btn" id="match_start">
 					<span class="mui-icon iconfont icon-kaishi"></span><span class="match-btn-text">开始</span>
 				</div>
-				<div class="match-restart match-btn" id="match_restart">
+				<div class="match-restart match-btn" id="match_restart" style="display: none;">
 					<span class="mui-icon iconfont icon-chongzhi"></span><span class="match-btn-text">重置</span>
 				</div>
-				<div class="match-end match-btn" id="match_end">
+				<div class="match-end match-btn" id="match_end" style="display: none;">
 					<span class="mui-icon iconfont icon-jieshu"></span><span class="match-btn-text">结束</span>
 				</div>
 				<div id="segmentedControl" class="mui-segmented-control">
@@ -139,7 +139,7 @@
 								<div class="mui-content">
 										<div class="mui-row time-table-tr">
 												<div class="mui-col-sm-3 mui-col-xs-12">第一组</div>
-												<div class="mui-col-sm-3 mui-col-xs-12 tar">10:12:34</div>
+												<div class="mui-col-sm-3 mui-col-xs-12 tar" time="1"></div>
 												<div class="mui-col-sm-6 mui-col-xs-12 tar">
 													1号
 													<button class="mui-btn mui-btn-primary vam ml15" data="1">到达</button>
@@ -147,7 +147,7 @@
 										</div>
 										<div class="mui-row time-table-tr">
 												<div class="mui-col-sm-3 mui-col-xs-12">第二组</div>
-												<div class="mui-col-sm-3 mui-col-xs-12 tar">10:12:34</div>
+												<div class="mui-col-sm-3 mui-col-xs-12 tar" time="2"></div>
 												<div class="mui-col-sm-6 mui-col-xs-12 tar">
 													2号
 													<button class="mui-btn mui-btn-primary vam ml15" data="2">到达</button>
@@ -155,7 +155,7 @@
 										</div>
 										<div class="mui-row time-table-tr">
 												<div class="mui-col-sm-3 mui-col-xs-12">第三组</div>
-												<div class="mui-col-sm-3 mui-col-xs-12 tar">10:12:34</div>
+												<div class="mui-col-sm-3 mui-col-xs-12 tar" time="3"></div>
 												<div class="mui-col-sm-6 mui-col-xs-12 tar">
 													3号
 													<button class="mui-btn mui-btn-primary vam ml15" data="3">到达</button>
@@ -163,7 +163,7 @@
 										</div>
 										<div class="mui-row time-table-tr">
 												<div class="mui-col-sm-3 mui-col-xs-12">第四组</div>
-												<div class="mui-col-sm-3 mui-col-xs-12 tar">10:12:34</div>
+												<div class="mui-col-sm-3 mui-col-xs-12 tar" time="4"></div>
 												<div class="mui-col-sm-6 mui-col-xs-12 tar">
 													4号
 													<button class="mui-btn mui-btn-primary vam ml15" data="4">到达</button>
@@ -195,7 +195,7 @@
 					<li class="mui-table-view-cell">性别：男</li>
 					<li class="mui-table-view-cell">分组：第四组</li>
 					<li class="mui-table-view-cell">棒次：第一棒</li>
-					<li class="mui-table-view-divider">赛况详情</li>
+					<li class="mui-table-view-divider">赛况详情<span id="person_refresh" class="mui-icon iconfont icon-shuaxin person-shuaxin"></span></li>
 					<li class="mui-table-view-cell">
 						<div class="mui-content">
 							<ul class="timeline-ul">
@@ -344,9 +344,11 @@
 		<script src="js/exampleData/getAllList.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/exampleData/getRacingList.js" type="text/javascript" charset="utf-8"></script>
 		
+		<script src="js/api.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/saishi.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jishi.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/grzx.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/fenzu.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/main.js"></script>
 		<script type="text/javascript">
 			mui.init()
 			// 初始化单页的区域滚动
