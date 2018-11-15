@@ -35,6 +35,13 @@
 .saishi-paihang-ul{
 	display:none;
 }
+.saishi-running-ul{
+	display:none;
+}
+.saishi-nostart-ul{
+	display: none;
+	text-align: center;
+}
 .icon-saishi{
 	color: red;
 }

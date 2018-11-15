@@ -7,7 +7,6 @@ function getFenzuData(){
 // 	});
 	// console.log(allList)
 	getTeamList({},function(response){
-		console.log(response)
 		mui('#teamRunnerTable')[0].innerHTML=renderTableData(response.result.team_runners,{filterColor:true});
 		mui('#allRunnerTable')[0].innerHTML=renderTableData(response.result.all_runners);
 		mui('#noRunnerTable')[0].innerHTML=renderNoRunnerTableData(response.result.no_runners);
@@ -25,7 +24,6 @@ function submitChangeData(){
 
 function renderHoverDetail(el){
 	var itemData = JSON.parse(el.getAttribute('userdata'));
-	console.log(itemData);
 	
 	mui('#hoverNameInput')[0].value=itemData.name;
 	mui('#hoverGroupInput')[0].value=itemData.team;
@@ -131,7 +129,6 @@ function renderTableData(data,param){
 
 
 mui.ready(function(){
-	console.log(mui('#settingMenuBtn'))
 	mui('#settingMenuBtn')[0].onclick=function(){
 		getFenzuData()
 	};

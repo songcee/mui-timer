@@ -1,19 +1,46 @@
 function getSaishiData(){
 	getTimerList({},function(response){
-		console.log(response)
 		mui('#saishiAllLive')[0].innerHTML=renderLiveList(response.result.process.all_runners,{racingList:response.result.racing_list.all_runners})
 		mui('#saishiGroupLive')[0].innerHTML=renderLiveList(response.result.process.team_runners,{racingList:response.result.racing_list.team_runners})
 	})
 }
-function checkSaishi(){
-	getRank({},function(response){
-		if(response.result.all_res.length){
+function renderPaihangList(){
+	getRank({},function(data){
+		console.log(data)
+		mui.each(mui('.saishi-paihang-ul'),function(index,item){
+			item.setAttribute('style','display:block');
+		})
+	})
+}
+function checkSaishi(response){
+	mui.each(mui('.saishi-running-ul,.saishi-paihang-ul,.saishi-nostart-ul'),function(index,item){
+		item.setAttribute('style','display:none')
+	})
+	console.log(response)
+	try{
+		clearTimeout(window.saishiTimer)
+	}catch(e){}
+	if(response.errorcode==-1){
+		//比赛未开始
+		mui.each(mui('.saishi-nostart-ul'),function(index,item){
+			item.setAttribute('style','display:block');
+		});
+		window.saishiTimer=setTimeout(function(){
+			getTimer();
+		},6000);
+	}else{
+		if(response.result.end_time!='0000-00-00 00:00:00'){
 			//比赛结束
+			renderPaihangList();
 		}else{
 			//比赛进行
+			mui.each(mui('.saishi-running-ul'),function(index,item){
+				item.setAttribute('style','display:block')
+			})
 			getSaishiData()
 		}
-	})
+		
+	}
 }
 /**
  * param{
