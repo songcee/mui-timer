@@ -1,3 +1,8 @@
+getTimerList({}, function (res) {
+	console.log(res);
+})
+
+
 // 开始比赛
 document.getElementById('match_start').addEventListener('tap', function () {
 	document.getElementById('stopwatch_no_start').style.display="none";
@@ -91,7 +96,7 @@ mui('#timeGroup').on('tap', '.mui-btn', function(){
 
 
 
-
+/*
 var timeQueue = [], timing = false;
 // 点击到达/已到达按钮
 mui('#timeGroup').on('tap', '.mui-btn', function(){
@@ -147,3 +152,4 @@ function timingApi () {
 		}
 	},'json');
 }
+*/
