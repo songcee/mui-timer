@@ -6,7 +6,6 @@ function renderTimer (res) {
 	var data = res.result;
 }
 
-
 // 开始比赛
 document.getElementById('match_start').addEventListener('tap', function () {
 	document.getElementById('stopwatch_no_start').style.display="none";

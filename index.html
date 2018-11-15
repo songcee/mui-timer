@@ -19,15 +19,15 @@
 				<span class="mui-icon iconfont icon-saishi"></span>
 				<span class="mui-tab-label">赛事</span>
 			</a>
-			<a class="mui-tab-item admin1" href="#timeTab" style="display: none;">
+			<a class="mui-tab-item" href="#timeTab" id="jishiMenuBtn" style="display: none;">
 				<span class="mui-icon mui-icon-phone"></span>
 				<span class="mui-tab-label">计时</span>
 			</a>
-			<a class="mui-tab-item" href="#personTab">
+			<a class="mui-tab-item" href="#personTab" id="grzxMenuBtn">
 				<span class="mui-icon mui-icon-person"></span>
 				<span class="mui-tab-label">个人中心</span>
 			</a>
-			<a class="mui-tab-item admin1" href="#gearTab" id="settingMenuBtn" style="display: none;">
+			<a class="mui-tab-item" href="#gearTab" id="settingMenuBtn" style="display: none;">
 				<span class="mui-icon mui-icon-gear"></span>
 				<span class="mui-tab-label">设置</span>
 			</a>
@@ -133,12 +133,12 @@
 					</li>
 						
 				</ul>
-							</div>
+			</div>
 			<div id="timeTab" class="mui-control-content ">
 				<h4 class="stopwatch-title">当前比赛时间</h4>
 				<h1 class="stopwatch-item" id="stopwatch_start" style="display: none;"><span id="timeTabHour">10</span>:<span id="timeTabMinute">20</span>:<span id="timeTabSecond">58</span></h1>
 				<h2 class="stopwatch-item" id="stopwatch_no_start">尚未开始</h2>
-				<div class="match-start match-btn" id="match_start">
+				<div class="match-start match-btn" id="match_start" style="display: none;">
 					<span class="mui-icon iconfont icon-kaishi"></span><span class="match-btn-text">开始</span>
 				</div>
 				<div class="match-restart match-btn" id="match_restart" style="display: none;">

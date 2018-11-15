@@ -2,17 +2,35 @@ mui.init();
 // var userInfo = jsVanish.getVanishUserInfo();
 var clientname = '宋策';
 var personInfo = void 0;
+var adminType = {
+	'全程赛': 1, // 最低权限
+	'分组赛': 1,
+	'观众': 1,
+	'工作人员': 2,
+	'折返点计时': 2, // 最低权限 + 计时
+	'起点计时': 3, // 最低权限 + 计时 + 开始
+	'管理员': 4 // 所有权限
+}
 // 获取个人身份信息
 getPersonInfo({clientname: clientname}, function (res) {
 	if (res.errorcode == 0) {
 		personInfo = res.result;
-		if (personInfo.single_info.type == '工作人员') {
-			mui.each(mui('.admin1'),function(key,item){
-				item.setAttribute('style','block')
-			})
+		switch(adminType[personInfo.single_info.type]) {
+			case 1: break;
+			case 2: 
+				mui('#jishiMenuBtn')[0].style = 'block';
+				break;
+			case 3: 
+				mui('#jishiMenuBtn')[0].style = 'block';
+				break;
+			case 4: 
+				mui('#jishiMenuBtn')[0].style = 'block';
+				mui('#settingMenuBtn')[0].style = 'block';
+				break;
+			default: ;
 		}
-		
-		
+		// 获取比赛计时列表
+		getTimerList();
 		/**
 		 * 判断比赛是否结束
 		 */

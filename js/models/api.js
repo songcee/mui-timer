@@ -90,6 +90,7 @@ function getTimer (params, cb) {
 		params,
 		function(data){
 			cb && cb(data);
+			checkSaishi(data);
 		},
 		'json'
 	);
