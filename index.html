@@ -19,7 +19,7 @@
 				<span class="mui-icon iconfont icon-saishi"></span>
 				<span class="mui-tab-label">赛事</span>
 			</a>
-			<a class="mui-tab-item" href="#timeTab">
+			<a class="mui-tab-item admin1" href="#timeTab" style="display: none;">
 				<span class="mui-icon mui-icon-phone"></span>
 				<span class="mui-tab-label">计时</span>
 			</a>
@@ -27,7 +27,7 @@
 				<span class="mui-icon mui-icon-person"></span>
 				<span class="mui-tab-label">个人中心</span>
 			</a>
-			<a class="mui-tab-item" href="#gearTab" id="settingMenuBtn">
+			<a class="mui-tab-item admin1" href="#gearTab" id="settingMenuBtn" style="display: none;">
 				<span class="mui-icon mui-icon-gear"></span>
 				<span class="mui-tab-label">设置</span>
 			</a>
@@ -349,32 +349,14 @@
 			</div>
 		</div>
 		<script src="js/mui.js"></script>
-		<!-- 临时替代接口数据 -->
-		<script src="js/exampleData/getAllList.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/exampleData/getRacingList.js" type="text/javascript" charset="utf-8"></script>
-		
 		<script src="js/models/api.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/views/saishi.js" type="text/javascript" charset="utf-8"></script>
+		<!-- <script src="js/views/saishi.js" type="text/javascript" charset="utf-8"></script> -->
 		<script src="js/views/jishi.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/views/grzx.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/views/fenzu.js" type="text/javascript" charset="utf-8"></script>
+		<!-- <script src="js/views/fenzu.js" type="text/javascript" charset="utf-8"></script> -->
+		<script src="js/main.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			mui.init()
-			// 初始化单页的区域滚动
-			// mui('.mui-scroll-wrapper').scroll();
-//            
-//             //自定义事件，模拟点击“首页选项卡”
-//             document.addEventListener('gohome', function() {
-//                 var defaultTab = document.getElementById("defaultTab");
-//                 //模拟首页点击
-//                 mui.trigger(defaultTab, 'tap');
-//                 //切换选项卡高亮
-//                 var current = document.querySelector(".mui-bar-tab>.mui-tab-item.mui-active");
-//                 if (defaultTab !== current) {
-//                     current.classList.remove('mui-active');
-//                     defaultTab.classList.add('mui-active');
-//                 }
-//             });
+			mui.init();
 		</script>
 	</body>
 

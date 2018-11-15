@@ -1,6 +1,10 @@
-getTimerList({}, function (res) {
-	console.log(res);
-})
+// 渲染计时界面
+function renderTimer (res) {
+	if (res.errorcode != 0) {
+		return;
+	}
+	var data = res.result;
+}
 
 
 // 开始比赛

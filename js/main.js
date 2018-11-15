@@ -1,3 +1,19 @@
+mui.init();
+// var userInfo = jsVanish.getVanishUserInfo();
+var clientname = '宋策';
+var personInfo = void 0;
+// 获取个人身份信息
+getPersonInfo({clientname: clientname}, function (res) {
+	if (res.errorcode == 0) {
+		personInfo = res.result;
+		if (personInfo.single_info.type == '工作人员') {
+			mui('.admin1')
+		}
+	}
+});
+
+
+/*
 var timeQueue = [], timing = false;
 mui('#timeGroup').on('tap', '.mui-btn', function(){
 	if (!this.classList.contains('mui-btn-primary')) {
@@ -81,3 +97,4 @@ document.getElementById('match_end').addEventListener('tap', function () {
 		}
 	});
 });
+*/
