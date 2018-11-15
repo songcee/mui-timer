@@ -5,13 +5,13 @@ function getFenzuData(){
 // 			
 // 		}
 // 	});
-	console.log(allList)
-	mui('#teamRunnerTable')[0].innerHTML='<h4>分组情况</h4>'+renderTableData(allList.result.team_runners,{filterColor:true});
+	// console.log(allList)
+	mui('#teamRunnerTable')[0].innerHTML=renderTableData(allList.result.team_runners,{filterColor:true});
 	mui('#teamRunnerTable').on('click','td',function(e){
 		renderHoverDetail(e.target)
 			mui('#popover').popover('show')
 	})
-	mui('#allRunnerTable')[0].innerHTML='<h4>全程运动员</h4>'+renderTableData(allList.result.all_runners);
+	mui('#allRunnerTable')[0].innerHTML=renderTableData(allList.result.all_runners);
 }
 
 function submitChangeData(){
@@ -60,9 +60,8 @@ function runderHoverEvent(){
  * 
  */
 function renderTableData(data,param){
-	var tableList = ['<table border="" cellspacing="" cellpadding="" class="runner-table">\
-						<tr>\
-							<th width="90px">分组</th>\
+	var tableList = ['<tr>\
+							<th width="50px">分组</th>\
 							<th>第一棒</th>\
 							<th>第二棒</th>\
 							<th>第三棒</th>\
@@ -80,14 +79,13 @@ function renderTableData(data,param){
 					case '4':val.sex=='女'?tdItem.push('class="female-runner-td"'):'';break;
 				}
 			}
-			tdItem.push(" userData='"+JSON.stringify(val)+"'>"+val.name+"</td>");
+			tdItem.push(" userData='"+JSON.stringify(val)+"'>"+val.name+'<br/>'+val.number+"</td>");
 			listItem.push(tdItem.join(''));
 			// console.log(key,val)
 		})
 		listItem.push('</tr>');
 		tableList.push(listItem.join(''));
 	});
-	tableList.push('</table>');
 	return tableList.join('');
 }
 

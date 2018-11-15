@@ -244,10 +244,18 @@
 			<!-- 设置页面 -->
 			<div id="gearTab" class="mui-control-content">
 				<div class="mui-content" >
-					<ul class="mui-table-view">
-							<li class="mui-table-view-cell" id="teamRunnerTable">
+					<ul class="mui-table-view group-table-area">
+							<li class="mui-table-view-cell" >
 								<h4>分组情况</h4>
-								<table border="" cellspacing="" cellpadding="" class="runner-table">
+								<ul class="legend-list">
+									<li>
+										<i class="icon-yellow"></i><span>全程</span>
+									</li>
+									<li>
+										<i class="icon-pink"></i><span>女生</span>
+									</li>
+								</ul>
+								<table border="" cellspacing="" cellpadding="" class="runner-table" id="teamRunnerTable">
 									<tr>
 										<th width="90px">分组</th>
 										<th>第一棒</th>
@@ -281,7 +289,8 @@
 									</tr>
 								</table>
 							</li>
-							<li class="mui-table-view-cell" id="allRunnerTable">全程运动员</li>
+							<li class="mui-table-view-cell" >全程运动员 <table  border="" cellspacing="" cellpadding="" class="runner-table"  id="allRunnerTable"></table>
+							</li>
 							<li class="mui-table-view-cell"><h4>工作人员</h4></li>
 					</ul>
 					<!-- <table cellspacing="" cellpadding="" class="runner-table fix-table">

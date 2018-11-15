@@ -229,6 +229,7 @@
 	border:1px solid lightskyblue;
 	line-height: 30px;
 	box-sizing: border-box;
+	font-size: 12px;
 }
 .fix-table{
 	position: fixed;
@@ -242,6 +243,32 @@
 .fix-table th{
 	border: 1px solid lightskyblue;
 	
+}
+.legend-list{
+	list-style: none;
+	position: absolute;
+	right:15px;
+	top:15px;
+	font-size: 12px;
+	overflow: hidden;
+	margin:0;
+	padding:0;
+}
+.legend-list li{
+	margin:0 10px 0 0;
+	float:right;
+}
+.icon-yellow,
+.icon-pink{
+	width:20px;
+	height:12px;
+	vertical-align: middle;
+	margin-right:5px;
+	display: inline-block;
+	background: #f0cd4e;
+}
+.icon-pink{
+	background: #bA9Df9;
 }
 .runner-table td,
 .runner-table th{
@@ -265,4 +292,7 @@
 .change-runner-detail .btn-sex{
 	float: left;
 	margin-left: 10px;
+}
+.mui-content .mui-table-view.group-table-area{
+	margin-top:0;
 }
