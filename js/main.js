@@ -7,8 +7,16 @@ getPersonInfo({clientname: clientname}, function (res) {
 	if (res.errorcode == 0) {
 		personInfo = res.result;
 		if (personInfo.single_info.type == '工作人员') {
-			mui('.admin1')
+			mui.each(mui('.admin1'),function(key,item){
+				item.setAttribute('style','block')
+			})
 		}
+		
+		
+		/**
+		 * 判断比赛是否结束
+		 */
+		checkSaishi();
 	}
 });
 

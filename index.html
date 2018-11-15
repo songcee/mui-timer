@@ -284,42 +284,11 @@
 									</li>
 								</ul>
 								<table border="" cellspacing="" cellpadding="" class="runner-table" id="teamRunnerTable">
-									<tr>
-										<th width="90px">分组</th>
-										<th>第一棒</th>
-										<th>第二棒</th>
-										<th>第三棒</th>
-										<th>第四棒</th>
-										<th>第五棒</th>
-									</tr>
-									<tr>
-										<td>第一组</td>
-										<td class="whole-journey-td">张三</td>
-										<td>李四</td>
-										<td>王五</td>
-										<td class="female-runner-td">赵六</td>
-										<td>薛七</td>
-									</tr>
-									<tr>
-										<td>第一组</td>
-										<td>张三</td>
-										<td>李四</td>
-										<td>王五</td>
-										<td>赵六</td>
-										<td>薛七</td>
-									</tr><tr>
-										<td>第一组</td>
-										<td>张三</td>
-										<td>李四</td>
-										<td>王五</td>
-										<td>赵六</td>
-										<td>薛七</td>
-									</tr>
 								</table>
 							</li>
-							<li class="mui-table-view-cell" >全程运动员 <table  border="" cellspacing="" cellpadding="" class="runner-table"  id="allRunnerTable"></table>
+							<li class="mui-table-view-cell" ><h4>全程运动员</h4> <table  border="" cellspacing="" cellpadding="" class="runner-table"  id="allRunnerTable"></table>
 							</li>
-							<li class="mui-table-view-cell"><h4>工作人员</h4></li>
+							<li class="mui-table-view-cell"><h4>工作人员</h4><table  border="" cellspacing="" cellpadding="" class="runner-table"  id="noRunnerTable"></li>
 					</ul>
 					<!-- <table cellspacing="" cellpadding="" class="runner-table fix-table">
 						<tr>
@@ -362,11 +331,17 @@
 						</div>
 						<div class="mui-input-row">
 								<label>身份</label>
-								<input type="text" class="mui-input-clear" placeholder="请输入分组赛/全程赛等" id="hoverTypeInput">
+								<!-- <input type="text" class="mui-input-clear" placeholder="请输入分组赛/全程赛等" id="hoverTypeInput"> -->
+								<select id="hoverTypeInput" class="hover-type-select">
+									<option value="分组赛">分组赛</option>
+									<option value="全程赛">全程赛</option>
+									<option value="工作人员">工作人员</option>
+									<option value="观众">观众</option>
+								</select>
 						</div>
 						<div class="mui-input-row">
-								<label>身份</label>
-								<input type="text" class="mui-input-clear" placeholder="请输入分组赛/全程赛等" id="hoverTypeInput">
+								<label>谁的家属</label>
+								<input type="text" class="mui-input-clear" placeholder="无" id="hoverFamilyInput">
 						</div>
 						<div class="mui-button-row">
 								<button type="button" class="mui-btn mui-btn-primary" id="hoverSubmitBtn">确认</button>
@@ -378,14 +353,11 @@
 		</div>
 		<script src="js/mui.js"></script>
 		<script src="js/models/api.js" type="text/javascript" charset="utf-8"></script>
-		<!-- <script src="js/views/saishi.js" type="text/javascript" charset="utf-8"></script> -->
+		<script src="js/views/saishi.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/views/jishi.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/views/grzx.js" type="text/javascript" charset="utf-8"></script>
-		<!-- <script src="js/views/fenzu.js" type="text/javascript" charset="utf-8"></script> -->
+		<script src="js/views/fenzu.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/main.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript">
-			mui.init();
-		</script>
 	</body>
 
 </html>

@@ -32,6 +32,9 @@
 /**
  * 赛事页面
  */
+.saishi-paihang-ul{
+	display:none;
+}
 .icon-saishi{
 	color: red;
 }
@@ -48,16 +51,18 @@
 	left:100px;
 	margin:0;
 	padding:0;
+	height:14px;
+	background:lightsteelblue;
 }
 .saishi-timeline-item{
 	float:left;
 	width:10%;
 	list-style: none;
-	border-bottom: 1px solid #A52A2A;
+	border-bottom: 2px dashed #fff;
 	border-left:2px solid #A52A2A;
-	height:5px;
+	height:7px;
 }
-.saishi-timeline-item:nth-child(even){
+.saishi-timeline-item:nth-child(odd){
 	border-left:0px solid #A52A2A;
 }
 .icon-qizi{
@@ -72,11 +77,14 @@
 	top:-20px;
 	left:-10px;
 }
-.icon-paobu{
+.icon-paobu-flash{
 	position: absolute;
 	left:-10px;
 	top:-20px;
 	transition: all 3s linear;
+	width:20px;
+	height:27px;
+	background: url(../images/runner.gif) no-repeat;
 }
 .icon-paobu-name{
 	position: absolute;
@@ -104,8 +112,8 @@
 .podium-area .podium-second{
 		position: absolute;
 		left: 20%;
-		margin-left: -1em;
-		bottom:50%;
+		margin-left: -2em;
+		bottom:40%;
 }
 .podium-area .podium-first{
 		position: absolute;
@@ -123,6 +131,10 @@
 		display:flex;
 		justify-content: space-around;
 }
+.podium-item:nth-child(odd){
+	background: #faf9fb;;
+}
+
 
 /**
  * 计时页面
@@ -309,6 +321,7 @@
 .runner-table td,
 .runner-table th{
 	text-align: center;
+	line-height: 20px;
 }
 .runner-table .whole-journey-td{
 	background: #F0cD4E;
@@ -322,8 +335,24 @@
 .hover-table-menu{
 	left:50%;
 	margin-left:-140px;
-	top: 20%;
+	top: 15%;
   position: fixed;
+	font-size: 12px;
+	padding-bottom: 10px;
+}
+.hover-table-menu input{
+	font-size: 12px;
+}
+.hover-table-menu .hover-type-select{
+	line-height: 20px;
+	font-size: 12px;
+	background: transparent;
+}
+.hover-table-menu .hover-type-select option{
+	line-height: 20px;
+}
+.mui-input-row{
+	line-height: 20px;
 }
 .change-runner-detail .btn-sex{
 	float: left;

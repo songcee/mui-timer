@@ -6,17 +6,22 @@ function getFenzuData(){
 // 		}
 // 	});
 	// console.log(allList)
-	mui('#teamRunnerTable')[0].innerHTML=renderTableData(allList.result.team_runners,{filterColor:true});
-	mui('#teamRunnerTable').on('click','td',function(e){
-		renderHoverDetail(e.target)
-			mui('#popover').popover('show')
+	getTeamList({},function(response){
+		console.log(response)
+		mui('#teamRunnerTable')[0].innerHTML=renderTableData(response.result.team_runners,{filterColor:true});
+		mui('#allRunnerTable')[0].innerHTML=renderTableData(response.result.all_runners);
+		mui('#noRunnerTable')[0].innerHTML=renderNoRunnerTableData(response.result.no_runners);
+		mui('#teamRunnerTable,#allRunnerTable,#noRunnerTable').on('click','td',function(e){
+			renderHoverDetail(e.target)
+				mui('#popover').popover('show')
+		})
 	})
-	mui('#allRunnerTable')[0].innerHTML=renderTableData(allList.result.all_runners);
 }
 
 function submitChangeData(){
 	console.log('提交修改')
 }
+
 
 function renderHoverDetail(el){
 	var itemData = JSON.parse(el.getAttribute('userdata'));
@@ -34,7 +39,14 @@ function renderHoverDetail(el){
 		mui('#hoverSexMale')[0].setAttribute('class','mui-btn btn-sex');
 	}
 	mui('#hoverDepartmentInput')[0].value=itemData.department;
-	mui('#hoverTypeInput')[0].value=itemData.type;
+	mui.each(mui('#hoverTypeInput')[0].children,function(index,item){
+		if(item.value == itemData.type){
+			item.setAttribute('selected','');
+		}else{
+			item.removeAttribute('selected');
+		}
+	})
+	mui('#hoverFamilyInput')[0].value=itemData.family;
 }
 function runderHoverEvent(){
 	mui('#hoverSexMale')[0].addEventListener('click',function(e){
@@ -88,11 +100,40 @@ function renderTableData(data,param){
 	});
 	return tableList.join('');
 }
+/**
+ * 渲染工作人员
+ */
+ function renderNoRunnerTableData(data){
+	var tableList = ['<tr>\
+							<th width="50px">id</th>\
+							<th>姓名</th>\
+							<th>部门</th>\
+							<th>性别</th>\
+							<th>谁的家属</th>\
+							<th>身份</th>\
+						</tr>'];
+						
+	mui.each(data,function(index,item){
+		var itemTitle = ['id','name','department','sex','family','type'];
+		var listItem = ['<tr>'];
+		var tdItem = [''];
+		for(var i=0;i<itemTitle.length;i++){
+			tdItem.push('<td ');
+			tdItem.push(" userData='"+JSON.stringify(item)+"'>"+item[itemTitle[i]]+"</td>");
+		}
+		listItem.push(tdItem.join(''));
+		listItem.push('</tr>');
+		tableList.push(listItem.join(''));
+	});
+	return tableList.join('');
+}
+
+
 
 mui.ready(function(){
+	console.log(mui('#settingMenuBtn'))
 	mui('#settingMenuBtn')[0].onclick=function(){
 		getFenzuData()
 	};
 	runderHoverEvent();
-	// getFenzuData()
 })
