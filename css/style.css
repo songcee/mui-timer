@@ -86,6 +86,42 @@
 	display: inline-block;
   width: 100px;
 }
+/**
+ * 排行榜
+ */
+.podium-area{
+		background: url(../images/podium.png) no-repeat;
+		background-position: bottom;
+		background-size: 100% 60%;
+		width:95%;
+		margin:10px auto;
+		height: 200px;
+		display: flex;
+		justify-content: space-around;
+		position: relative;
+		font-family: "microsoft yahei";
+}
+.podium-area .podium-second{
+		position: absolute;
+		left: 20%;
+		margin-left: -1em;
+		bottom:50%;
+}
+.podium-area .podium-first{
+		position: absolute;
+		left: 46%;
+		margin-left: -1em;
+		bottom:64%;
+}
+.podium-area .podium-third{
+		position: absolute;
+		right: 16%;
+		margin-right:-1em;
+		bottom:40%;
+}
+.podium-item{
+		display:flex;
+		justify-content: space-around;
 }
 
 /**

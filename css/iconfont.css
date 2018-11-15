@@ -25,3 +25,9 @@
 .icon-chongzhi:before { content: "\e612"; }
 
 .icon-kaishi:before { content: "\e613"; }
+
+.icon-yajun:before { content: "\e6b0"; color: mintcream; }
+
+.icon-guanjun:before { content: "\e6b1"; color: gold;}
+
+.icon-jijun:before { content: "\e6b2"; color: darkgoldenrod;}
