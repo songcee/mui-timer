@@ -10,7 +10,7 @@ function renderStopwatch (res) {
 			mui('#match_start')[0].style="block";
 		}
 	} else if (res.errorcode == 0) {
-		if (res.result.end_time == '0000-00-00 00:00:00') {
+		if (!hasTime(res.result.end_time)) {
 			// 比赛正在进行中
 			mui('#stopwatch_no_start')[0].style.display="none"
 			mui('#stopwatch_start')[0].style="block";
@@ -37,7 +37,73 @@ function renderTimerList (res) {
 	if (res.errorcode != 0) {
 		return;
 	}
-	var data = res.result;
+	var data = res.result.racing_list;
+	console.log(data)
+	var html = {
+		start: {
+			1: '<div class="mui-table-view-divider fb black bggrey">全程跑</div>',
+			2: '<div class="mui-table-view-divider fb black bggrey">全程跑</div>',
+			3: '<div class="mui-table-view-divider fb black bggrey">全程跑</div>',
+			4: '<div class="mui-table-view-divider fb black bggrey">全程跑</div>',
+			5: '<div class="mui-table-view-divider fb black bggrey">全程跑</div>'
+		},
+		half: {
+			1: '<div class="mui-table-view-divider fb black bggrey">全程跑</div>',
+			2: '<div class="mui-table-view-divider fb black bggrey">全程跑</div>',
+			3: '<div class="mui-table-view-divider fb black bggrey">全程跑</div>',
+			4: '<div class="mui-table-view-divider fb black bggrey">全程跑</div>',
+			5: '<div class="mui-table-view-divider fb black bggrey">全程跑</div>'
+		}
+	};
+	for (var num in data.all_runners) {
+		for (var times in data.all_runners[num]) {
+			var return_time = data.all_runners[num][times]['return_time'];
+			var end_time = data.all_runners[num][times]['end_time'];
+			html.start[times] += '<div class="mui-row time-table-tr">\
+				<div class="mui-col-sm-3 mui-col-xs-12">全程跑</div>\
+				<div class="mui-col-sm-3 mui-col-xs-12 tar" time="'+num+'">'+(hasTime(end_time)?end_time:'')+'</div>\
+				<div class="mui-col-sm-6 mui-col-xs-12 tar">\
+					'+num+'号<button class="mui-btn mui-btn-primary vam ml15" num="'+num+'">到达</button>\
+				</div>\
+			</div>';
+			html.half[times] += '<div class="mui-row time-table-tr">\
+				<div class="mui-col-sm-3 mui-col-xs-12">全程跑</div>\
+				<div class="mui-col-sm-3 mui-col-xs-12 tar" time="'+num+'">'+(hasTime(return_time)?return_time:'')+'</div>\
+				<div class="mui-col-sm-6 mui-col-xs-12 tar">\
+					'+num+'号<button class="mui-btn mui-btn-primary vam ml15" num="'+num+'">到达</button>\
+				</div>\
+			</div>';
+		}
+	}
+	for (var i in html.start) {
+		html.start[i] += '<div class="mui-table-view-divider fb black bggrey">分组跑</div>';
+		html.half[i] += '<div class="mui-table-view-divider fb black bggrey">分组跑</div>';
+	}
+	for (var num in data.team_runners) {
+		for (var times in data.team_runners[num]) {
+			var return_time = data.team_runners[num][times]['return_time'];
+			var end_time = data.team_runners[num][times]['end_time'];
+			var number = data.team_runners[num][times]['number'];
+			html.start[times] += '<div class="mui-row time-table-tr">\
+				<div class="mui-col-sm-3 mui-col-xs-12">第'+data.team_runners[num][times]['team']+'组</div>\
+				<div class="mui-col-sm-3 mui-col-xs-12 tar" time="'+number+'">'+(hasTime(end_time)?end_time:'')+'</div>\
+				<div class="mui-col-sm-6 mui-col-xs-12 tar">\
+					'+number+'号<button class="mui-btn mui-btn-primary vam ml15" num="'+number+'">到达</button>\
+				</div>\
+			</div>';
+			html.half[times] += '<div class="mui-row time-table-tr">\
+				<div class="mui-col-sm-3 mui-col-xs-12">第'+data.team_runners[num][times]['team']+'组</div>\
+				<div class="mui-col-sm-3 mui-col-xs-12 tar" time="'+number+'">'+(hasTime(return_time)?return_time:'')+'</div>\
+				<div class="mui-col-sm-6 mui-col-xs-12 tar">\
+					'+number+'号<button class="mui-btn mui-btn-primary vam ml15" num="'+number+'">到达</button>\
+				</div>\
+			</div>';
+		}
+	}
+	for (var i in html.start) {
+		mui('#timeStartStick' + i)[0].innerHTML = '<div class="mui-content">' + html.start[i] + '</div>';
+		mui('#timeHalfStick' + i)[0].innerHTML = '<div class="mui-content">' + html.half[i] + '</div>';
+	}
 }
 
 // 开始比赛
@@ -102,16 +168,16 @@ mui('#timeGroup').on('tap', '.mui-btn', function(){
 		},'div')
 		return;
 	}
-	var data = this.getAttribute("data");
+	var num = this.getAttribute("num");
 	this.classList.add('mui-btn-outlined');
 	this.innerText = '统计中';
 	request({
 		url: 'http://running.10jqka.com.cn/running/index.php?m=api&c=racing&a=timing',
-		params: {number: data},
+		params: {number: num},
 		function (res) {
 			if (res.errorcode == 0) {
-				mui('[data="' + num + '"]')[0].classList.remove('mui-btn-primary');
-				mui('[data="' + num + '"]')[0].innerText = '已到达';
+				mui('[num="' + num + '"]')[0].classList.remove('mui-btn-primary');
+				mui('[num="' + num + '"]')[0].innerText = '已到达';
 			} else {
 				mui.toast('计时失败，失败原因：' + res.errormsg)
 			}

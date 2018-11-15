@@ -18,6 +18,18 @@
 	margin-left: 15px;
 }
 
+.fb{
+	font-weight: bold;
+}
+
+.black{
+	color: black;
+}
+
+.bggrey{
+	 background: #ddd;
+}
+
 .mui-bar-tab .mui-tab-item.mui-active {
 	background: #DDD;
 }
@@ -29,6 +41,7 @@
 .mui-col-xs-20 {
 	width: 20%;
 }
+
 /**
  * 赛事页面
  */

@@ -24,7 +24,7 @@ function getTeamList (params, cb) {
 
 // 开始比赛接口（暂时不需要额外参数）
 function startMatch (params, cb) {
-	mui.post(
+	mui.get(
 		'http://running.10jqka.com.cn/running/index.php?m=api&c=racing&a=start',
 		params,
 		function(data){
@@ -36,7 +36,7 @@ function startMatch (params, cb) {
 
 // 重置比赛计时数据接口（需要参数：clientname=xxx）
 function restartMatch (params, cb) {
-	mui.post(
+	mui.get(
 		'http://running.10jqka.com.cn/running/index.php?m=api&c=racing&a=restart',
 		params,
 		function(data){
@@ -73,7 +73,7 @@ function getTimerList (params, cb) {
 
 // 比赛计时接口
 function timing (params, cb) {
-	mui.post(
+	mui.get(
 		'http://running.10jqka.com.cn/running/index.php?m=api&c=racing&a=timing',
 		params,
 		function(data){
@@ -129,7 +129,7 @@ function getRank (params, cb) {
 // ——team_idx：第几棒
 // ——type：工作人员、分组赛、全程赛、观众、起点计时、折返计时
 function changePerson (params, cb) {
-	mui.post(
+	mui.get(
 		'http://running.10jqka.com.cn/running/index.php?m=api&c=person&a=modify',
 		params,
 		function(data){

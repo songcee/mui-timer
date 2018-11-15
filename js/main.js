@@ -12,6 +12,7 @@ var adminType = {
 	'管理员': 4 // 所有权限
 };
 var admin = 1;
+var getTimerIntervel = null;
 // 获取个人身份信息
 getPersonInfo({clientname: clientname}, function (res) {
 	if (res.errorcode == 0) {
@@ -33,11 +34,16 @@ getPersonInfo({clientname: clientname}, function (res) {
 		}
 		// 时间判断（赛事界面、计时界面秒表栏 判断比赛是否开始、结束）
 		getTimer();
-		setInterval(function () {
-			getTimer();
-		}, 60000);
 		// 获取比赛计时列表
 		getTimerList();
+		
+		getTimerIntervel = setInterval(function () {
+			getTimer({}, function (res) {
+				if (res.errorcode == 0 && hasTime(res.result.end_time)) {
+					clearInterval(getTimerIntervel);
+				}
+			});
+		}, 60000);
 	}
 });
 
