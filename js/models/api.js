@@ -65,7 +65,7 @@ function getTimerList (params, cb) {
 		params,
 		function(data){
 			cb && cb(data);
-			renderTimer(data); // 渲染计时界面列表
+			renderTimerList(data); // 渲染计时界面列表
 		},
 		'json'
 	);
@@ -91,6 +91,7 @@ function getTimer (params, cb) {
 		function(data){
 			cb && cb(data);
 			checkSaishi(data);
+			renderStopwatch(data);
 		},
 		'json'
 	);

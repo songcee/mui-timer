@@ -10,12 +10,14 @@ var adminType = {
 	'折返点计时': 2, // 最低权限 + 计时
 	'起点计时': 3, // 最低权限 + 计时 + 开始
 	'管理员': 4 // 所有权限
-}
+};
+var admin = 1;
 // 获取个人身份信息
 getPersonInfo({clientname: clientname}, function (res) {
 	if (res.errorcode == 0) {
 		personInfo = res.result;
-		switch(adminType[personInfo.single_info.type]) {
+		admin = adminType[personInfo.single_info.type];
+		switch(admin) {
 			case 1: break;
 			case 2: 
 				mui('#jishiMenuBtn')[0].style = 'block';
@@ -29,6 +31,8 @@ getPersonInfo({clientname: clientname}, function (res) {
 				break;
 			default: ;
 		}
+		// 时间判断（赛事界面、计时界面秒表栏 判断比赛是否开始、结束）
+		getTimer();
 		// 获取比赛计时列表
 		getTimerList();
 		/**

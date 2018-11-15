@@ -1,5 +1,34 @@
+// 渲染秒表及开始结束按钮
+function renderStopwatch (res) {
+	if (admin < 2) {
+		return;
+	}
+	if (res.errorcode == -1) {
+		// 比赛未开始
+		mui('#stopwatch_no_start')[0].style="block";
+		if (admin < 3) {
+			mui('#match_start')[0].style="block";
+		}
+	} else if (res.errorcode == 0) {
+		if (res.result.end_time == '0000-00-00 00:00:00') {
+			mui('#stopwatch_no_start')[0].style="none";
+			mui('#stopwatch_start')[0].style="block";
+			// 比赛正在进行中
+			if (admin < 3) {
+				mui('#match_start')[0].style="none";
+				mui('#match_restart')[0].style="block";
+				mui('#match_end')[0].style="block";
+			}
+		} else {
+			// 比赛结束
+			mui('#stopwatch_no_start')[0].style="block";
+			mui('#stopwatch_start')[0].style="none";
+			
+		}
+	}
+}
 // 渲染计时界面
-function renderTimer (res) {
+function renderTimerList (res) {
 	if (res.errorcode != 0) {
 		return;
 	}
