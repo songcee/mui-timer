@@ -16,7 +16,6 @@ function checkSaishi(response){
 	mui.each(mui('.saishi-running-ul,.saishi-paihang-ul,.saishi-nostart-ul'),function(index,item){
 		item.setAttribute('style','display:none')
 	})
-	console.log(response)
 	try{
 		clearTimeout(window.saishiTimer)
 	}catch(e){}
@@ -25,9 +24,6 @@ function checkSaishi(response){
 		mui.each(mui('.saishi-nostart-ul'),function(index,item){
 			item.setAttribute('style','display:block');
 		});
-		window.saishiTimer=setTimeout(function(){
-			getTimer();
-		},6000);
 	}else{
 		if(response.result.end_time!='0000-00-00 00:00:00'){
 			//比赛结束
