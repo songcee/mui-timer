@@ -48,7 +48,7 @@ function restartMatch (params, cb) {
 
 // 结束比赛接口（需要参数：clientname=xxx）
 function finishMatch (params, cb) {
-	mui.post(
+	mui.get(
 		'http://running.10jqka.com.cn/running/index.php?m=api&c=racing&a=finish',
 		params,
 		function(data){

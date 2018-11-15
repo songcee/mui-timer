@@ -1,12 +1,12 @@
 mui.init();
 // var userInfo = jsVanish.getVanishUserInfo();
-var clientname = '宋策';
+var clientname = '李晓栋';
 var personInfo = void 0;
 var adminType = {
 	'全程赛': 1, // 最低权限
-	'分组赛': 1,
+	'分组赛': 4,
 	'观众': 1,
-	'工作人员': 2,
+	'工作人员': 1,
 	'折返点计时': 2, // 最低权限 + 计时
 	'起点计时': 3, // 最低权限 + 计时 + 开始
 	'管理员': 4 // 所有权限
@@ -33,12 +33,11 @@ getPersonInfo({clientname: clientname}, function (res) {
 		}
 		// 时间判断（赛事界面、计时界面秒表栏 判断比赛是否开始、结束）
 		getTimer();
+		setInterval(function () {
+			getTimer();
+		}, 60000);
 		// 获取比赛计时列表
 		getTimerList();
-		/**
-		 * 判断比赛是否结束
-		 */
-		checkSaishi();
 	}
 });
 

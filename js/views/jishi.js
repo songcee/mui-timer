@@ -6,24 +6,29 @@ function renderStopwatch (res) {
 	if (res.errorcode == -1) {
 		// 比赛未开始
 		mui('#stopwatch_no_start')[0].style="block";
-		if (admin < 3) {
+		if (admin >= 3) {
 			mui('#match_start')[0].style="block";
 		}
 	} else if (res.errorcode == 0) {
 		if (res.result.end_time == '0000-00-00 00:00:00') {
-			mui('#stopwatch_no_start')[0].style="none";
-			mui('#stopwatch_start')[0].style="block";
 			// 比赛正在进行中
-			if (admin < 3) {
-				mui('#match_start')[0].style="none";
+			mui('#stopwatch_no_start')[0].style.display="none"
+			mui('#stopwatch_start')[0].style="block";
+			if (admin == 4) {
+				mui('#match_start')[0].style.display="none"
 				mui('#match_restart')[0].style="block";
 				mui('#match_end')[0].style="block";
 			}
 		} else {
 			// 比赛结束
+			mui('#stopwatch_no_start')[0].innerText="比赛结束";
 			mui('#stopwatch_no_start')[0].style="block";
-			mui('#stopwatch_start')[0].style="none";
-			
+			mui('#stopwatch_start')[0].style.display="none"
+			if (admin == 4) {
+				mui('#match_restart')[0].style="block";
+				mui('#match_start')[0].style.display="none"
+				mui('#match_end')[0].style.display="none"
+			}
 		}
 	}
 }
@@ -37,11 +42,11 @@ function renderTimerList (res) {
 
 // 开始比赛
 document.getElementById('match_start').addEventListener('tap', function () {
-	document.getElementById('stopwatch_no_start').style.display="none";
-	document.getElementById('stopwatch_start').style.display="block";
-	document.getElementById('match_start').style.display="none";
-	document.getElementById('match_restart').style.display="block";
-	document.getElementById('match_end').style.display="block";
+	startMatch({}, function (res) {
+		if (res.errorcode == 0) {
+			getTimer();
+		}
+	})
 });
 // 重新开始比赛
 document.getElementById('match_restart').addEventListener('tap', function () {
@@ -49,11 +54,11 @@ document.getElementById('match_restart').addEventListener('tap', function () {
 		if (data.index == 1) {
 			mui.confirm('真的确认要重新开始比赛吗？！', '', '', function (data) {
 				if (data.index == 1) {
-					document.getElementById('stopwatch_start').style.display="none";
-					document.getElementById('stopwatch_no_start').style.display="block";
-					document.getElementById('match_start').style.display="block";
-					document.getElementById('match_restart').style.display="none";
-					document.getElementById('match_end').style.display="none";
+					restartMatch({clientname: clientname}, function (res) {
+						if (res.errorcode == 0) {
+							getTimer();
+						}
+					})
 				}
 			});
 		}
@@ -65,12 +70,11 @@ document.getElementById('match_end').addEventListener('tap', function () {
 		if (data.index == 1) {
 			mui.confirm('真的确认结束比赛了吗？！', '', '', function (data) {
 				if (data.index == 1) {
-					document.getElementById('stopwatch_start').style.display="none";
-					document.getElementById('stopwatch_no_start').innerText="比赛结束";
-					document.getElementById('stopwatch_no_start').style.display="block";
-					document.getElementById('match_start').style.display="none";
-					document.getElementById('match_restart').style.display="none";
-					document.getElementById('match_end').style.display="none";
+					finishMatch({clientname: clientname}, function (res) {
+						if (res.errorcode == 0) {
+							getTimer();
+						}
+					})
 				}
 			});
 		}
