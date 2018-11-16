@@ -59,18 +59,20 @@ function renderTimerList (res) {
 		for (var times in data.all_runners[num]) {
 			var return_time = data.all_runners[num][times]['return_time'];
 			var end_time = data.all_runners[num][times]['end_time'];
-			html.start[times] += '<div class="mui-row time-table-tr">\
+			var number = data.all_runners[num][times]['number'];
+			var all_idx = data.all_runners[num][times]['all_idx'];
+			html.start[times] += '<div class="mui-row time-table-tr timing_end_'+all_idx+'_'+number+'">\
 				<div class="mui-col-sm-3 mui-col-xs-12">全程跑</div>\
-				<div class="mui-col-sm-3 mui-col-xs-12 tar" time="'+num+'">'+(hasTime(end_time)?end_time:'')+'</div>\
+				<div class="mui-col-sm-3 mui-col-xs-12" time="'+number+'">'+(hasTime(end_time)?renderHMS(end_time):'')+'</div>\
 				<div class="mui-col-sm-6 mui-col-xs-12 tar">\
-					'+num+'号<button class="mui-btn mui-btn-primary vam ml15" num="'+num+'">到达</button>\
+					'+number+'号<button class="mui-btn '+(hasTime(end_time)?'':'mui-btn-primary')+' vam ml15" num="'+number+'" all_idx="'+all_idx+'" time_type="end">'+(hasTime(end_time)?'已到达':'到达')+'</button>\
 				</div>\
 			</div>';
-			html.half[times] += '<div class="mui-row time-table-tr">\
+			html.half[times] += '<div class="mui-row time-table-tr timing_return_'+all_idx+'_'+number+'">\
 				<div class="mui-col-sm-3 mui-col-xs-12">全程跑</div>\
-				<div class="mui-col-sm-3 mui-col-xs-12 tar" time="'+num+'">'+(hasTime(return_time)?return_time:'')+'</div>\
+				<div class="mui-col-sm-3 mui-col-xs-12" time="'+number+'">'+(hasTime(return_time)?renderHMS(return_time):'')+'</div>\
 				<div class="mui-col-sm-6 mui-col-xs-12 tar">\
-					'+num+'号<button class="mui-btn mui-btn-primary vam ml15" num="'+num+'">到达</button>\
+					'+number+'号<button class="mui-btn '+(hasTime(return_time)?'':'mui-btn-primary')+' vam ml15" num="'+number+'" all_idx="'+all_idx+'" time_type="return">'+(hasTime(return_time)?'已到达':'到达')+'</button>\
 				</div>\
 			</div>';
 		}
@@ -84,18 +86,19 @@ function renderTimerList (res) {
 			var return_time = data.team_runners[num][times]['return_time'];
 			var end_time = data.team_runners[num][times]['end_time'];
 			var number = data.team_runners[num][times]['number'];
-			html.start[times] += '<div class="mui-row time-table-tr">\
+			var team_idx = data.team_runners[num][times]['team_idx'];
+			html.start[times] += '<div class="mui-row time-table-tr timing_end_'+team_idx+'_'+number+'">\
 				<div class="mui-col-sm-3 mui-col-xs-12">第'+data.team_runners[num][times]['team']+'组</div>\
-				<div class="mui-col-sm-3 mui-col-xs-12 tar" time="'+number+'">'+(hasTime(end_time)?end_time:'')+'</div>\
+				<div class="mui-col-sm-3 mui-col-xs-12" time="'+number+'">'+(hasTime(end_time)?renderHMS(end_time):'')+'</div>\
 				<div class="mui-col-sm-6 mui-col-xs-12 tar">\
-					'+number+'号<button class="mui-btn mui-btn-primary vam ml15" num="'+number+'">到达</button>\
+					'+number+'号<button class="mui-btn '+(hasTime(end_time)?'':'mui-btn-primary')+' vam ml15" num="'+number+'" team_idx="'+team_idx+'" time_type="end">'+(hasTime(end_time)?'已到达':'到达')+'</button>\
 				</div>\
 			</div>';
-			html.half[times] += '<div class="mui-row time-table-tr">\
+			html.half[times] += '<div class="mui-row time-table-tr timing_return_'+team_idx+'_'+number+'">\
 				<div class="mui-col-sm-3 mui-col-xs-12">第'+data.team_runners[num][times]['team']+'组</div>\
-				<div class="mui-col-sm-3 mui-col-xs-12 tar" time="'+number+'">'+(hasTime(return_time)?return_time:'')+'</div>\
+				<div class="mui-col-sm-3 mui-col-xs-12" time="'+number+'">'+(hasTime(return_time)?renderHMS(return_time):'')+'</div>\
 				<div class="mui-col-sm-6 mui-col-xs-12 tar">\
-					'+number+'号<button class="mui-btn mui-btn-primary vam ml15" num="'+number+'">到达</button>\
+					'+number+'号<button class="mui-btn '+(hasTime(return_time)?'':'mui-btn-primary')+' vam ml15" num="'+number+'" team_idx="'+team_idx+'" time_type="return">'+(hasTime(return_time)?'已到达':'到达')+'</button>\
 				</div>\
 			</div>';
 		}
@@ -147,9 +150,20 @@ document.getElementById('match_end').addEventListener('tap', function () {
 	});
 });
 
-/*
 // 点击到达/已到达按钮
-mui('#timeGroup').on('tap', '.mui-btn', function(){
+mui('#timeStartGroup, #timeHalfGroup').on('tap', '.mui-btn', function(e){
+	var num = this.getAttribute("num"); // 序号
+	var all_idx = this.getAttribute("all_idx"); // 棒次 （只有全程赛有这个概念）
+	var team_idx = this.getAttribute("team_idx"); // 棒次 （只有分组赛有这个概念）
+	var time_type = this.getAttribute("time_type"); // 半程计时点还是起点计时点
+	params = {
+		number: num,
+		time_type: time_type,
+		clientname: clientname
+	};
+	if (all_idx != undefined) {
+		params.all_idx = all_idx;
+	}
 	if (!this.classList.contains('mui-btn-primary')) {
 		mui.prompt('请输入正确时间：','格式：HH:MM:SS','修改时间',['取消','确认'],function (data) {
 			if (data.index == 0) {
@@ -162,29 +176,35 @@ mui('#timeGroup').on('tap', '.mui-btn', function(){
 				　　return false;	
 				} else {
 					// @todo 此处需要添加提交正确的时间方法
-					mui.alert("提交成功！");	
+					params.time = data.value;
+					timing(params, function (res) {
+						if (res.errorcode == 0) {
+							mui('.timing_' + time_type + '_' + (all_idx || team_idx) + '_' + num).each(function (i, val) {
+								// @todo 添加渲染到达时间的逻辑
+							});
+						} else {
+							mui.toast('计时失败，失败原因：' + res.errormsg)
+						}
+					});
 				}
 			}
 		},'div')
 		return;
 	}
-	var num = this.getAttribute("num");
 	this.classList.add('mui-btn-outlined');
 	this.innerText = '统计中';
-	request({
-		url: 'http://running.10jqka.com.cn/running/index.php?m=api&c=racing&a=timing',
-		params: {number: num},
-		function (res) {
-			if (res.errorcode == 0) {
-				mui('[num="' + num + '"]')[0].classList.remove('mui-btn-primary');
-				mui('[num="' + num + '"]')[0].innerText = '已到达';
-			} else {
-				mui.toast('计时失败，失败原因：' + res.errormsg)
-			}
+	timing(params, function (res) {
+		if (res.errorcode == 0) {
+			mui('.timing_' + time_type + '_' + (all_idx || team_idx) + '_' + num).each(function (i, val) {
+				val.children[2].children[0].classList.remove('mui-btn-primary');
+				val.children[2].children[0].innerText = '已到达';
+				// @todo 添加渲染到达时间的逻辑
+			});
+		} else {
+			mui.toast('计时失败，失败原因：' + res.errormsg)
 		}
-	})
+	});
 });
-*/
 
 
 

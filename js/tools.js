@@ -4,3 +4,7 @@ function hasTime (time) {
 	}
 	return true;
 }
+
+function renderHMS (time) {
+	return time.substr(11, 8);
+}

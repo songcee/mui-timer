@@ -5,6 +5,7 @@ function getPersonInfo (params, cb) {
 		params,
 		function(data){
 			cb && cb(data);
+			renderPersonInfo(data);
 		},
 		'json'
 	);
@@ -72,6 +73,11 @@ function getTimerList (params, cb) {
 }
 
 // 比赛计时接口
+// ——clientname：当前登录的人员姓名（用于验证）
+// ——number：编号
+// ——all_idx：第几棒（统计全程跑的时间时需要）
+// ——time_type：终点计时、折返计时
+// ——time：手动修改的时间
 function timing (params, cb) {
 	mui.get(
 		'http://running.10jqka.com.cn/running/index.php?m=api&c=racing&a=timing',

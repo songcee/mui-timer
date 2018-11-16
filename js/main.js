@@ -1,6 +1,6 @@
 mui.init();
 // var userInfo = jsVanish.getVanishUserInfo();
-var clientname = '李晓栋';
+var clientname = '叶峰瑞';
 var personInfo = void 0;
 var adminType = {
 	'全程赛': 1, // 最低权限
