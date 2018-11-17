@@ -67,6 +67,7 @@ function getTimerList (params, cb) {
 		function(data){
 			cb && cb(data);
 			renderTimerList(data); // 渲染计时界面列表
+			renderPersonMatchInfo(data);
 		},
 		'json'
 	);
