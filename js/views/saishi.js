@@ -1,8 +1,8 @@
-function getSaishiData(){
-	getTimerList({},function(response){
+function getSaishiData(response){
+	// getTimerList({},function(response){
 		mui('#saishiAllLive')[0].innerHTML=renderLiveList(response.result.process.all_runners,{racingList:response.result.racing_list.all_runners})
 		mui('#saishiGroupLive')[0].innerHTML=renderLiveList(response.result.process.team_runners,{racingList:response.result.racing_list.team_runners})
-	})
+	// })
 }
 function renderPaihangList(){
 	getRank({},function(data){
@@ -33,7 +33,7 @@ function checkSaishi(response){
 			mui.each(mui('.saishi-running-ul'),function(index,item){
 				item.setAttribute('style','display:block')
 			})
-			getSaishiData()
+			// getSaishiData()
 		}
 		
 	}
