@@ -43,6 +43,7 @@ getPersonInfo({clientname: clientname}, function (res) {
 					clearInterval(getTimerIntervel);
 				}
 			});
+			getTimerList()
 		}, 60000);
 	}
 });

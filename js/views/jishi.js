@@ -1,10 +1,9 @@
 // 渲染秒表及开始结束按钮
 function renderStopwatch (res) {
-	if (admin < 2) {
-		return;
-	}
+	var now, interval = null;
 	if (res.errorcode == -1) {
 		// 比赛未开始
+		if (admin < 2) {return;}
 		mui('#stopwatch_no_start')[0].style="block";
 		if (admin >= 3) {
 			mui('#match_start')[0].style="block";
@@ -12,8 +11,28 @@ function renderStopwatch (res) {
 	} else if (res.errorcode == 0) {
 		if (!hasTime(res.result.end_time)) {
 			// 比赛正在进行中
+			now = addSecond(res.result.start_time, res.result.running_time);
 			mui('#stopwatch_no_start')[0].style.display="none"
+			mui('#stopwatch_start')[0].innerHTML='<span id="timeTabHour">'+now[0]+'</span>:<span id="timeTabMinute">'+now[1]+'</span>:<span id="timeTabSecond">'+now[2]+'</span>';
 			mui('#stopwatch_start')[0].style="block";
+			clearInterval(interval);
+			interval = setInterval(function () {
+				now[2] = Number(now[2]) + 1;
+				if (now[2] == '60') {
+					now[2] = '00';
+					now[1] = Number(now[1]) + 1;
+				}
+				if (now[1] == '60') {
+					now[1] = '00';
+					now[0] = Number(now[0]) + 1;
+				}
+				if (now[0] == '24') {
+					now[0] = '00';
+				}
+				mui('#timeTabHour')[0].innerText = now[0];
+				mui('#timeTabMinute')[0].innerText = now[1];
+				mui('#timeTabSecond')[0].innerText = now[2];
+			}, 1000);
 			if (admin == 4) {
 				mui('#match_start')[0].style.display="none"
 				mui('#match_restart')[0].style="block";
@@ -114,6 +133,8 @@ document.getElementById('match_start').addEventListener('tap', function () {
 	startMatch({}, function (res) {
 		if (res.errorcode == 0) {
 			getTimer();
+		} else {
+			mui.alert(res.errormsg);
 		}
 	})
 });
@@ -125,7 +146,9 @@ document.getElementById('match_restart').addEventListener('tap', function () {
 				if (data.index == 1) {
 					restartMatch({clientname: clientname}, function (res) {
 						if (res.errorcode == 0) {
-							getTimer();
+							window.location.reload();
+						} else {
+							mui.alert(res.errormsg);
 						}
 					})
 				}
@@ -141,7 +164,9 @@ document.getElementById('match_end').addEventListener('tap', function () {
 				if (data.index == 1) {
 					finishMatch({clientname: clientname}, function (res) {
 						if (res.errorcode == 0) {
-							getTimer();
+							window.location.reload();
+						} else {
+							mui.alert(res.errormsg);
 						}
 					})
 				}
@@ -181,6 +206,7 @@ mui('#timeStartGroup, #timeHalfGroup').on('tap', '.mui-btn', function(e){
 						if (res.errorcode == 0) {
 							mui('.timing_' + time_type + '_' + (all_idx || team_idx) + '_' + num).each(function (i, val) {
 								// @todo 添加渲染到达时间的逻辑
+								val.children[1].innerText = res.result;
 							});
 						} else {
 							mui.toast('计时失败，失败原因：' + res.errormsg)
@@ -199,6 +225,7 @@ mui('#timeStartGroup, #timeHalfGroup').on('tap', '.mui-btn', function(e){
 				val.children[2].children[0].classList.remove('mui-btn-primary');
 				val.children[2].children[0].innerText = '已到达';
 				// @todo 添加渲染到达时间的逻辑
+				val.children[1].innerText = res.result;
 			});
 		} else {
 			mui.toast('计时失败，失败原因：' + res.errormsg)
