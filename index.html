@@ -40,7 +40,7 @@
 					</li>
 					<li class="mui-table-view-cell saishi-paihang-ul">
 						<h4>团队排行榜</h4>
-						<ul class="mui-table-view">
+						<ul class="mui-table-view" id="paihangTeamList">
 							<li class="mui-table-view-cell">
 								<div class="podium-area">
 									<span class="podium-second">宋策</span>
@@ -67,6 +67,11 @@
 					</li>
 					<li class="mui-table-view-cell saishi-paihang-ul">
 						<h4>个人排行榜</h4>
+						<ul class="mui-table-view" id="paihangRunnerList"></ul>
+					</li>
+					<li class="mui-table-view-cell saishi-paihang-ul">
+						<h4>全程排行榜</h4>
+						<ul class="mui-table-view" id="paihangAllList"></ul>
 					</li>
 					<li class="mui-table-view-cell saishi-running-ul">
 						<h4>全程运动员实况</h4>
@@ -224,6 +229,8 @@
 									<option value="分组赛">分组赛</option>
 									<option value="全程赛">全程赛</option>
 									<option value="工作人员">工作人员</option>
+									<option value="起点计时">起点计时</option>
+									<option value="折返计时">折返计时</option>
 									<option value="观众">观众</option>
 								</select>
 						</div>

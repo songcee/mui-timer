@@ -23,6 +23,18 @@ function getTeamList (params, cb) {
 	);
 }
 
+// 修改分组成员接口
+function modifyTeamList (params, cb) {
+	mui.get(
+		'http://running.10jqka.com.cn/running/index.php?m=api&c=person&a=modify',
+		params,
+		function(data){
+			cb && cb(data);
+		},
+		'json'
+	);
+}
+
 // 开始比赛接口（暂时不需要额外参数）
 function startMatch (params, cb) {
 	mui.get(

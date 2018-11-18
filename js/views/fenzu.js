@@ -18,7 +18,31 @@ function getFenzuData(){
 }
 
 function submitChangeData(){
-	console.log('提交修改')
+	var params = {};
+	params.clientname = window.clientname;
+	if(mui('#hoverNameInput')[0].value==''){mui.toast('oh！请填写姓名！');return;}
+	params.modify_name = mui('#hoverNameInput')[0].value;
+	if(mui('#hoverGroupInput')[0].value==''){mui.toast('oh！请填写组别！');return;}
+	params.team = mui('#hoverGroupInput')[0].value;
+	if(mui('#hoverIndexInput')[0].value==''){mui.toast('oh！请填写棒别！');return;}
+	params.team_idx = mui('#hoverIndexInput')[0].value;
+	if(mui('#hoverIDInput')[0].value==''){mui.toast('oh！请填写编号！');return;}
+	params.number = mui('#hoverIDInput')[0].value;
+// 	if(mui('#hoverSexMale')[0].className.search('primary')!=-1){
+// 		params.sex = '男';
+// 	}else{
+// 		params.sex = '女';
+// 	}
+	if(mui('#hoverDepartmentInput')[0].value==''){mui.toast('oh！请填写部门！');return;}
+	params.type = mui('#hoverDepartmentInput')[0].value;
+// 	if(mui('#hoverTypeInput')[0].value==''){mui.toast('oh！请填写家属！');return;}
+// 	params.number = mui('#hoverTypeInput')[0].value;
+	modifyTeamList(params,function(msg){
+		mui.toast(msg.errormsg);
+		if(msg.errorcode==0){
+			getFenzuData()
+		}
+	});
 }
 
 

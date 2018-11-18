@@ -131,25 +131,28 @@
 }
 .podium-area .podium-second{
 		position: absolute;
-		left: 20%;
+		left: 18%;
 		margin-left: -2em;
 		bottom:40%;
+		text-align: center;
 }
 .podium-area .podium-first{
 		position: absolute;
-		left: 46%;
-		margin-left: -1em;
+		left: 50%;
+		margin-left: -2em;
 		bottom:64%;
+		text-align: center;
 }
 .podium-area .podium-third{
 		position: absolute;
-		right: 16%;
-		margin-right:-1em;
+		right: 18%;
+		margin-right:-2em;
 		bottom:40%;
+		text-align: center;
 }
 .podium-item{
 		display:flex;
-		justify-content: space-around;
+		justify-content: space-between;
 }
 .podium-item:nth-child(odd){
 	background: #faf9fb;;
