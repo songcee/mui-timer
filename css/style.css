@@ -115,6 +115,23 @@
   width: 100px;
 }
 /**
+ * 未开始跑步
+ */
+.loading-bg{
+	background:#62d7ac;
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+}
+.mui-table-view::after{
+	display:none;
+}
+.saishi-nostart-ul::after{
+	display:none;
+}
+/**
  * 排行榜
  */
 .podium-area{
@@ -155,7 +172,7 @@
 		justify-content: space-between;
 }
 .podium-item:nth-child(odd){
-	background: #faf9fb;;
+	background: #faf9fb;
 }
 
 

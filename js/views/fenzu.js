@@ -33,14 +33,17 @@ function submitChangeData(){
 // 	}else{
 // 		params.sex = '女';
 // 	}
-	if(mui('#hoverDepartmentInput')[0].value==''){mui.toast('oh！请填写部门！');return;}
-	params.type = mui('#hoverDepartmentInput')[0].value;
+	if(mui('#hoverTypeInput')[0].value==''){mui.toast('oh！请选择身份！');return;}
+	params.type = mui('#hoverTypeInput')[0].value;
 // 	if(mui('#hoverTypeInput')[0].value==''){mui.toast('oh！请填写家属！');return;}
 // 	params.number = mui('#hoverTypeInput')[0].value;
 	modifyTeamList(params,function(msg){
-		mui.toast(msg.errormsg);
 		if(msg.errorcode==0){
-			getFenzuData()
+			getFenzuData();
+			mui.toast('修改成功');
+			mui('#popover').popover('hide')
+		}else{
+			mui.toast(msg.errormsg);
 		}
 	});
 }
@@ -53,14 +56,14 @@ function renderHoverDetail(el){
 	mui('#hoverGroupInput')[0].value=itemData.team;
 	mui('#hoverIndexInput')[0].value=itemData.team_idx;
 	mui('#hoverIDInput')[0].value=itemData.number;
-	if(itemData.sex=='男'){
-		mui('#hoverSexMale')[0].setAttribute('class','mui-btn btn-sex mui-btn-primary');
-		mui('#hoverSexFemale')[0].setAttribute('class','mui-btn btn-sex');
-	}else{
-		mui('#hoverSexFemale')[0].setAttribute('class','mui-btn btn-sex mui-btn-primary');
-		mui('#hoverSexMale')[0].setAttribute('class','mui-btn btn-sex');
-	}
-	mui('#hoverDepartmentInput')[0].value=itemData.department;
+// 	if(itemData.sex=='男'){
+// 		mui('#hoverSexMale')[0].setAttribute('class','mui-btn btn-sex mui-btn-primary');
+// 		mui('#hoverSexFemale')[0].setAttribute('class','mui-btn btn-sex');
+// 	}else{
+// 		mui('#hoverSexFemale')[0].setAttribute('class','mui-btn btn-sex mui-btn-primary');
+// 		mui('#hoverSexMale')[0].setAttribute('class','mui-btn btn-sex');
+// 	}
+	// mui('#hoverDepartmentInput')[0].value=itemData.department;
 	mui.each(mui('#hoverTypeInput')[0].children,function(index,item){
 		if(item.value == itemData.type){
 			item.setAttribute('selected','');
@@ -68,17 +71,17 @@ function renderHoverDetail(el){
 			item.removeAttribute('selected');
 		}
 	})
-	mui('#hoverFamilyInput')[0].value=itemData.family;
+	// mui('#hoverFamilyInput')[0].value=itemData.family;
 }
 function runderHoverEvent(){
-	mui('#hoverSexMale')[0].addEventListener('click',function(e){
-		e.target.setAttribute('class','mui-btn btn-sex mui-btn-primary');
-		e.target.nextElementSibling.setAttribute('class','mui-btn btn-sex');
-	});
-	mui('#hoverSexFemale')[0].addEventListener('click',function(e){
-		e.target.setAttribute('class','mui-btn btn-sex mui-btn-primary');
-		e.target.previousElementSibling.setAttribute('class','mui-btn btn-sex');
-	});
+// 	mui('#hoverSexMale')[0].addEventListener('click',function(e){
+// 		e.target.setAttribute('class','mui-btn btn-sex mui-btn-primary');
+// 		e.target.nextElementSibling.setAttribute('class','mui-btn btn-sex');
+// 	});
+// 	mui('#hoverSexFemale')[0].addEventListener('click',function(e){
+// 		e.target.setAttribute('class','mui-btn btn-sex mui-btn-primary');
+// 		e.target.previousElementSibling.setAttribute('class','mui-btn btn-sex');
+// 	});
 	mui('#hoverCancelBtn')[0].addEventListener('click',function(e){
 		mui('#popover').popover('hide')
 	})

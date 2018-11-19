@@ -36,7 +36,10 @@
 			<div id="saishiTab" class="mui-control-content mui-active">
 				<ul class="mui-table-view">
 					<li class="mui-table-view-cell saishi-nostart-ul">
-						<h4>比赛尚未开始~</h4>
+						<div class="loading-bg">
+						<h4 style="margin-top: 100px;">比赛尚未开始</h4>
+							<img src="images/loading.gif" alt="">
+						</div>
 					</li>
 					<li class="mui-table-view-cell saishi-paihang-ul">
 						<h4>团队排行榜</h4>
@@ -213,7 +216,7 @@
 								<label>编号</label>
 								<input type="number" class="mui-input-clear" placeholder="请输入编号" id="hoverIDInput">
 						</div>
-						<div class="mui-input-row">
+						<!-- <div class="mui-input-row">
 								<label>性别</label>
 								<button type="button" class="mui-btn btn-sex" id="hoverSexMale">男</button>
 								<button type="button" class="mui-btn btn-sex" id="hoverSexFemale">女</button>
@@ -221,7 +224,7 @@
 						<div class="mui-input-row">
 								<label>部门</label>
 								<input type="text" class="mui-input-clear" placeholder="请输入部门" id="hoverDepartmentInput">
-						</div>
+						</div> -->
 						<div class="mui-input-row">
 								<label>身份</label>
 								<!-- <input type="text" class="mui-input-clear" placeholder="请输入分组赛/全程赛等" id="hoverTypeInput"> -->
@@ -234,10 +237,10 @@
 									<option value="观众">观众</option>
 								</select>
 						</div>
-						<div class="mui-input-row">
+						<!-- <div class="mui-input-row">
 								<label>谁的家属</label>
 								<input type="text" class="mui-input-clear" placeholder="无" id="hoverFamilyInput">
-						</div>
+						</div> -->
 						<div class="mui-button-row">
 								<button type="button" class="mui-btn mui-btn-primary" id="hoverSubmitBtn">确认</button>
 								<button type="button" class="mui-btn mui-btn-danger" id="hoverCancelBtn">取消</button>
