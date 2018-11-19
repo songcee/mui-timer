@@ -4,9 +4,17 @@ function renderStopwatch (res) {
 	if (res.errorcode == -1) {
 		// 比赛未开始
 		if (admin < 2) {return;}
+		mui('#stopwatch_no_start')[0].innerText="尚未开始";
 		mui('#stopwatch_no_start')[0].style="block";
+		mui('#match_start')[0].style.display="none";
 		if (admin >= 3) {
 			mui('#match_start')[0].style="block";
+			mui('#match_restart')[0].style.display="none";
+			mui('#match_end')[0].style.display="none";
+		} else {
+			mui('#match_start')[0].style="none";
+			mui('#match_restart')[0].style.display="none";
+			mui('#match_end')[0].style.display="none";
 		}
 	} else if (res.errorcode == 0) {
 		if (!hasTime(res.result.end_time)) {
@@ -16,15 +24,16 @@ function renderStopwatch (res) {
 			mui('#stopwatch_start')[0].innerHTML='<span id="timeTabHour">'+now[0]+'</span>:<span id="timeTabMinute">'+now[1]+'</span>:<span id="timeTabSecond">'+now[2]+'</span>';
 			mui('#stopwatch_start')[0].style="block";
 			clearInterval(interval);
+			console.log(interval)
 			interval = setInterval(function () {
-				now[2] = Number(now[2]) + 1;
+				now[2] = Number(now[2]) + 1 < 10 ? '0' + (Number(now[2]) + 1) : Number(now[2]) + 1;
 				if (now[2] == '60') {
 					now[2] = '00';
-					now[1] = Number(now[1]) + 1;
+					now[1] = Number(now[1]) + 1 < 10 ? '0' + (Number(now[1]) + 1) : Number(now[1]) + 1;
 				}
 				if (now[1] == '60') {
 					now[1] = '00';
-					now[0] = Number(now[0]) + 1;
+					now[0] = Number(now[0]) + 1 < 10 ? '0' + (Number(now[0]) + 1) : Number(now[0]) + 1;
 				}
 				if (now[0] == '24') {
 					now[0] = '00';
@@ -34,19 +43,20 @@ function renderStopwatch (res) {
 				mui('#timeTabSecond')[0].innerText = now[2];
 			}, 1000);
 			if (admin == 4) {
-				mui('#match_start')[0].style.display="none"
+				mui('#match_start')[0].style.display="none";
 				mui('#match_restart')[0].style="block";
 				mui('#match_end')[0].style="block";
 			}
 		} else {
 			// 比赛结束
+			clearInterval(interval);
 			mui('#stopwatch_no_start')[0].innerText="比赛结束";
 			mui('#stopwatch_no_start')[0].style="block";
-			mui('#stopwatch_start')[0].style.display="none"
+			mui('#stopwatch_start')[0].style.display="none";
 			if (admin == 4) {
 				mui('#match_restart')[0].style="block";
-				mui('#match_start')[0].style.display="none"
-				mui('#match_end')[0].style.display="none"
+				mui('#match_start')[0].style.display="none";
+				mui('#match_end')[0].style.display="none";
 			}
 		}
 	}
@@ -54,10 +64,10 @@ function renderStopwatch (res) {
 // 渲染计时界面
 function renderTimerList (res) {
 	if (res.errorcode != 0) {
+		mui.alert(res.errormsg);
 		return;
 	}
 	var data = res.result.racing_list;
-	console.log(data)
 	var html = {
 		start: {
 			1: '<div class="mui-table-view-divider fb black bggrey">全程跑</div>',
@@ -201,12 +211,12 @@ mui('#timeStartGroup, #timeHalfGroup').on('tap', '.mui-btn', function(e){
 				　　return false;	
 				} else {
 					// @todo 此处需要添加提交正确的时间方法
-					params.time = data.value;
+					params.time = '2018-11-25 ' + data.value;
 					timing(params, function (res) {
 						if (res.errorcode == 0) {
 							mui('.timing_' + time_type + '_' + (all_idx || team_idx) + '_' + num).each(function (i, val) {
 								// @todo 添加渲染到达时间的逻辑
-								val.children[1].innerText = res.result;
+								val.children[1].innerText = renderHMS(res.result);
 							});
 						} else {
 							mui.toast('计时失败，失败原因：' + res.errormsg)
@@ -225,7 +235,7 @@ mui('#timeStartGroup, #timeHalfGroup').on('tap', '.mui-btn', function(e){
 				val.children[2].children[0].classList.remove('mui-btn-primary');
 				val.children[2].children[0].innerText = '已到达';
 				// @todo 添加渲染到达时间的逻辑
-				val.children[1].innerText = res.result;
+				val.children[1].innerText = renderHMS(res.result);
 			});
 		} else {
 			mui.toast('计时失败，失败原因：' + res.errormsg)

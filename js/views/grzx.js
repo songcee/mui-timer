@@ -2,7 +2,6 @@ var person_info = null;
 var personNum = []; // 记录个人及家属的编号，与item_infos数组相对应
 // 渲染个人数据
 function renderPersonInfo (res) {
-	console.log(res)
 	if (res.errorcode == 0) {
 		person_info = res.result;
 		var single_info = res.result.single_info || {};
@@ -29,8 +28,8 @@ function renderPersonInfo (res) {
 			}
 		}
 		personNum.push({number: single_info.number, type: single_info.type});
-		single_html += '<li class="mui-table-view-divider black bggrey fb">家属信息</li>';
 		if (res.result.family_infos && res.result.family_infos.length > 0) {
+			single_html += '<li class="mui-table-view-divider black bggrey fb">家属信息</li>';
 			for (var i in res.result.family_infos) {
 				single_html += '<li class="mui-table-view-cell">家属姓名：'+res.result.family_infos[i].name+'</li>';
 				single_html += '<li class="mui-table-view-cell">家属性别：'+res.result.family_infos[i].sex+'</li>';
@@ -138,6 +137,8 @@ mui('#person_ul').on('tap', '#person_refresh', function(){
 					clearInterval(refreshInterval);
 				}
 			}, 1000);
+		} else {
+			mui.alert(res.errormsg);
 		}
 	})
 });
