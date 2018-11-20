@@ -35,6 +35,11 @@ function renderPersonInfo (res) {
 				single_html += '<li class="mui-table-view-cell">家属性别：'+res.result.family_infos[i].sex+'</li>';
 				single_html += '<li class="mui-table-view-cell">家属出行方式：'+res.result.family_infos[i].travel+'</li>';
 				single_html += '<li class="mui-table-view-cell">家属活动身份：'+res.result.family_infos[i].type+'</li>';
+				if (res.result.family_infos[i].travel == '蹭车') {
+					single_html += '<li class="mui-table-view-cell">出行方式：'+res.result.family_infos[i].travel+'--'+res.result.family_infos[i].car_owner+'</li>';
+				} else {
+					single_html += '<li class="mui-table-view-cell">出行方式：'+res.result.family_infos[i].travel+'</li>';
+				}
 				if (res.result.family_infos[i].type == '分组赛') {
 					single_html += '<li class="mui-table-view-cell">家属分组：第'+res.result.family_infos[i].team+'组</li>\
 					<li class="mui-table-view-cell">家属棒次：第'+res.result.family_infos[i].team_idx+'棒</li>\

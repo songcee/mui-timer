@@ -10,7 +10,7 @@ function renderHMS (time) {
 }
 
 function addSecond (time, second) {
-	var newDate = new Date(new Date(time).valueOf() + second * 1000);
+	var newDate = new Date(new Date(time.replace(/-/g, '/')).valueOf() + second * 1000);
 	return formatDate(newDate, 'hh:mm:ss').split(':');
 }
 

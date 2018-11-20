@@ -3,6 +3,12 @@
 	bottom: inherit !important;
 }
 
+body{
+	position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
 * {
 	touch-action: none;
 }
@@ -336,9 +342,8 @@
 	border:1px solid lightskyblue;
 	line-height: 30px;
 	box-sizing: border-box;
-	font-size: 14px;
+	font-size: 12px;
 }
-
 .fix-table{
 	position: fixed;
 	top: 43px;
@@ -350,6 +355,7 @@
 }
 .fix-table th{
 	border: 1px solid lightskyblue;
+	
 }
 .legend-list{
 	list-style: none;
@@ -381,10 +387,6 @@
 .runner-table th{
 	text-align: center;
 	line-height: 20px;
-	white-space: nowrap;
-}
-.work-table td{
-	line-height: 40px;
 }
 .runner-table .whole-journey-td{
 	background: #F0cD4E;
