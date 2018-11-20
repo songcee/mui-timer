@@ -34,160 +34,141 @@
 		</nav>
 		<div class="mui-content">
 			<div id="saishiTab" class="mui-control-content mui-active">
-				<ul class="mui-table-view">
-					<li class="mui-table-view-cell saishi-nostart-ul">
-						<div class="loading-bg">
-						<h4 style="margin-top: 100px;">比赛尚未开始</h4>
-							<img src="images/loading.gif" alt="">
-						</div>
-					</li>
-					<li class="mui-table-view-cell saishi-paihang-ul">
-						<h4>团队排行榜</h4>
-						<ul class="mui-table-view" id="paihangTeamList">
-							<li class="mui-table-view-cell">
-								<div class="podium-area">
-									<span class="podium-second">宋策</span>
-									<span class="podium-first">李晓栋</span>
-									<span class="podium-third">王一斌</span>
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell saishi-nostart-ul">
+								<div class="loading-bg">
+								<h4 style="margin-top: 100px;">比赛尚未开始</h4>
+									<img src="images/loading.gif" alt="">
 								</div>
 							</li>
-							<li class="mui-table-view-cell podium-item">
-								<span class="podium-count">4</span><span>宋策</span><span>14:20:20</span>
+							<li class="mui-table-view-cell saishi-paihang-ul">
+								<h4>团队排行榜</h4>
+								<ul class="mui-table-view" id="paihangTeamList"></ul>
 							</li>
-							<li class="mui-table-view-cell podium-item">
-								<span class="podium-count">5</span><span>宋策</span><span>14:20:20</span>
+							<li class="mui-table-view-cell saishi-paihang-ul">
+								<h4>个人排行榜</h4>
+								<ul class="mui-table-view" id="paihangRunnerList"></ul>
 							</li>
-							<li class="mui-table-view-cell podium-item">
-								<span class="podium-count">6</span><span>宋策</span><span>14:20:20</span>
+							<li class="mui-table-view-cell saishi-paihang-ul">
+								<h4>全程排行榜</h4>
+								<ul class="mui-table-view" id="paihangAllList"></ul>
 							</li>
-							<li class="mui-table-view-cell podium-item">
-								<span class="podium-count">7</span><span>宋策</span><span>14:20:20</span>
+							<li class="mui-table-view-cell saishi-running-ul">
+								<h4>全程运动员实况</h4>
+								<ul class="mui-table-view saishi-ul" id="saishiAllLive"></ul>
 							</li>
-							<li class="mui-table-view-cell podium-item">
-								<span class="podium-count">8</span><span>宋策</span><span>14:20:20</span>
+							<li class="mui-table-view-cell saishi-running-ul">
+								<h4>分组比赛实况</h4>
+								<ul class="mui-table-view saishi-ul" id="saishiGroupLive"></ul>
 							</li>
 						</ul>
-					</li>
-					<li class="mui-table-view-cell saishi-paihang-ul">
-						<h4>个人排行榜</h4>
-						<ul class="mui-table-view" id="paihangRunnerList"></ul>
-					</li>
-					<li class="mui-table-view-cell saishi-paihang-ul">
-						<h4>全程排行榜</h4>
-						<ul class="mui-table-view" id="paihangAllList"></ul>
-					</li>
-					<li class="mui-table-view-cell saishi-running-ul">
-						<h4>全程运动员实况</h4>
-						<ul class="mui-table-view saishi-ul" id="saishiAllLive">
-						</ul>
-					</li>
-					<li class="mui-table-view-cell saishi-running-ul">
-						<h4>分组比赛实况</h4>
-						<ul class="mui-table-view saishi-ul" id="saishiGroupLive"></ul>
-					</li>
-						
-				</ul>
-			</div>
-			<div id="timeTab" class="mui-control-content ">
-				<h4 class="stopwatch-title">当前比赛时间</h4>
-				<h1 class="stopwatch-item" id="stopwatch_start" style="display: none;"><span id="timeTabHour">10</span>:<span id="timeTabMinute">20</span>:<span id="timeTabSecond">58</span></h1>
-				<h2 class="stopwatch-item" id="stopwatch_no_start" style="display: none;">尚未开始</h2>
-				<div class="match-start match-btn" id="match_start" style="display: none;">
-					<span class="mui-icon iconfont icon-kaishi"></span><span class="match-btn-text">开始</span>
-				</div>
-				<div class="match-restart match-btn" id="match_restart" style="display: none;">
-					<span class="mui-icon iconfont icon-chongzhi"></span><span class="match-btn-text">重置</span>
-				</div>
-				<div class="match-end match-btn" id="match_end" style="display: none;">
-					<span class="mui-icon iconfont icon-jieshu"></span><span class="match-btn-text">结束</span>
-				</div>
-				<div id="segmentedControl" class="mui-segmented-control">
-					<a class="mui-control-item mui-active" href="#timeHalf">折返点</a>
-					<a class="mui-control-item" href="#timeStart">终点</a>
-				</div>
-				<div class="mui-content-padded">
-					<div id="timeHalf" class="mui-control-content mui-slider mui-active">
-						<!--选项卡标题区-->
-						<div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-						  <a class="mui-control-item mui-active" href="#timeHalfStick1">第一棒</a>
-						  <a class="mui-control-item" href="#timeHalfStick2">第二棒</a>
-						  <a class="mui-control-item" href="#timeHalfStick3">第三棒</a>
-						  <a class="mui-control-item" href="#timeHalfStick4">第四棒</a>
-						  <a class="mui-control-item" href="#timeHalfStick5">第五棒</a>
-						</div>
-						<div class="mui-slider-group" id="timeHalfGroup">
-						  <!--第一个选项卡内容区-->
-						  <div id="timeHalfStick1" class="mui-slider-item mui-control-content mui-active"></div>
-						  <!--第二个选项卡内容区，页面加载时为空-->
-						  <div id="timeHalfStick2" class="mui-slider-item mui-control-content"></div>
-						  <!--第三个选项卡内容区，页面加载时为空-->
-						  <div id="timeHalfStick3" class="mui-slider-item mui-control-content"></div>
-						  <!--第三个选项卡内容区，页面加载时为空-->
-						  <div id="timeHalfStick4" class="mui-slider-item mui-control-content"></div>
-						  <!--第三个选项卡内容区，页面加载时为空-->
-						  <div id="timeHalfStick5" class="mui-slider-item mui-control-content"></div>
-						</div>
 					</div>
-					<div id="timeStart" class="mui-control-content mui-slider">
-						<!--选项卡标题区-->
-						<div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-						  <a class="mui-control-item mui-active" href="#timeStartStick1">第一棒</a>
-						  <a class="mui-control-item" href="#timeStartStick2">第二棒</a>
-						  <a class="mui-control-item" href="#timeStartStick3">第三棒</a>
-						  <a class="mui-control-item" href="#timeStartStick4">第四棒</a>
-						  <a class="mui-control-item" href="#timeStartStick5">第五棒</a>
+				</div>
+			</div>
+			<div id="timeTab" class="mui-control-content">
+				<div class="mui-scroll-wrapper" id="time_scroll_wrapper">
+					<div class="mui-scroll" id="time_scroll_container">
+						<h4 class="stopwatch-title">当前比赛时间</h4>
+						<h1 class="stopwatch-item" id="stopwatch_start" style="display: none;"><span id="timeTabHour">10</span>:<span id="timeTabMinute">20</span>:<span id="timeTabSecond">58</span></h1>
+						<h2 class="stopwatch-item" id="stopwatch_no_start" style="display: none;">尚未开始</h2>
+						<div class="match-start match-btn" id="match_start" style="display: none;">
+							<span class="mui-icon iconfont icon-kaishi"></span><span class="match-btn-text">开始</span>
 						</div>
-						<div class="mui-slider-group" id="timeStartGroup">
-						  <!--第一个选项卡内容区-->
-						  <div id="timeStartStick1" class="mui-slider-item mui-control-content mui-active"></div>
-						  <!--第二个选项卡内容区，页面加载时为空-->
-						  <div id="timeStartStick2" class="mui-slider-item mui-control-content"></div>
-						  <!--第三个选项卡内容区，页面加载时为空-->
-						  <div id="timeStartStick3" class="mui-slider-item mui-control-content"></div>
-						  <!--第三个选项卡内容区，页面加载时为空-->
-						  <div id="timeStartStick4" class="mui-slider-item mui-control-content"></div>
-						  <!--第三个选项卡内容区，页面加载时为空-->
-						  <div id="timeStartStick5" class="mui-slider-item mui-control-content"></div>
+						<div class="match-restart match-btn" id="match_restart" style="display: none;">
+							<span class="mui-icon iconfont icon-chongzhi"></span><span class="match-btn-text">重置</span>
+						</div>
+						<div class="match-end match-btn" id="match_end" style="display: none;">
+							<span class="mui-icon iconfont icon-jieshu"></span><span class="match-btn-text">结束</span>
+						</div>
+						<div id="segmentedControl" class="mui-segmented-control">
+							<a class="mui-control-item mui-active" href="#timeHalf">折返点</a>
+							<a class="mui-control-item" href="#timeStart">终点</a>
+						</div>
+						<div class="mui-content-padded">
+							<div id="timeHalf" class="mui-control-content mui-active">
+								<!--选项卡标题区-->
+								<div class="mui-segmented-control mui-segmented-control-inverted view_timer_stick">
+								  <a class="mui-control-item mui-active" href="#timeHalfStick1">第一棒</a>
+								  <a class="mui-control-item" href="#timeHalfStick2">第二棒</a>
+								  <a class="mui-control-item" href="#timeHalfStick3">第三棒</a>
+								  <a class="mui-control-item" href="#timeHalfStick4">第四棒</a>
+								  <a class="mui-control-item" href="#timeHalfStick5">第五棒</a>
+								</div>
+								<div class="" id="timeHalfGroup">
+								  <!--第一个选项卡内容区-->
+								  <div id="timeHalfStick1" class="mui-control-content mui-active"></div>
+								  <!--第二个选项卡内容区，页面加载时为空-->
+								  <div id="timeHalfStick2" class="mui-control-content"></div>
+								  <!--第三个选项卡内容区，页面加载时为空-->
+								  <div id="timeHalfStick3" class="mui-control-content"></div>
+								  <!--第三个选项卡内容区，页面加载时为空-->
+								  <div id="timeHalfStick4" class="mui-control-content"></div>
+								  <!--第三个选项卡内容区，页面加载时为空-->
+								  <div id="timeHalfStick5" class="mui-control-content"></div>
+								</div>
+							</div>
+							<div id="timeStart" class="mui-control-content">
+								<!--选项卡标题区-->
+								<div class="mui-segmented-control mui-segmented-control-inverted view_timer_stick">
+								  <a class="mui-control-item mui-active" href="#timeStartStick1">第一棒</a>
+								  <a class="mui-control-item" href="#timeStartStick2">第二棒</a>
+								  <a class="mui-control-item" href="#timeStartStick3">第三棒</a>
+								  <a class="mui-control-item" href="#timeStartStick4">第四棒</a>
+								  <a class="mui-control-item" href="#timeStartStick5">第五棒</a>
+								</div>
+								<div class="" id="timeStartGroup">
+								  <!--第一个选项卡内容区-->
+								  <div id="timeStartStick1" class="mui-control-content mui-active"></div>
+								  <!--第二个选项卡内容区，页面加载时为空-->
+								  <div id="timeStartStick2" class="mui-control-content"></div>
+								  <!--第三个选项卡内容区，页面加载时为空-->
+								  <div id="timeStartStick3" class="mui-control-content"></div>
+								  <!--第三个选项卡内容区，页面加载时为空-->
+								  <div id="timeStartStick4" class="mui-control-content"></div>
+								  <!--第三个选项卡内容区，页面加载时为空-->
+								  <div id="timeStartStick5" class="mui-control-content"></div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<!-- 个人中心 -->
 			<div id="personTab" class="mui-control-content">
-				<ul class="mui-table-view" id="person_ul"></ul>
-				<div id="person_match_info"></div>
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<ul class="mui-table-view" id="person_ul"></ul>
+						<div id="person_match_info"></div>
+					</div>
+				</div>
 			</div>
 			<!-- 设置页面 -->
 			<div id="gearTab" class="mui-control-content">
-				<div class="mui-content" >
-					<ul class="mui-table-view group-table-area">
-							<li class="mui-table-view-cell" >
-								<h4>分组情况</h4>
-								<ul class="legend-list">
-									<li>
-										<i class="icon-yellow"></i><span>全程</span>
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div class="mui-content" >
+							<ul class="mui-table-view group-table-area">
+									<li class="mui-table-view-cell" >
+										<h4>分组情况</h4>
+										<ul class="legend-list">
+											<li>
+												<i class="icon-yellow"></i><span>全程</span>
+											</li>
+											<li>
+												<i class="icon-pink"></i><span>女生</span>
+											</li>
+										</ul>
+										<table border="" cellspacing="" cellpadding="" class="runner-table" id="teamRunnerTable">
+										</table>
 									</li>
-									<li>
-										<i class="icon-pink"></i><span>女生</span>
+									<li class="mui-table-view-cell" ><h4>全程运动员</h4> <table  border="" cellspacing="" cellpadding="" class="runner-table"  id="allRunnerTable"></table>
 									</li>
-								</ul>
-								<table border="" cellspacing="" cellpadding="" class="runner-table" id="teamRunnerTable">
-								</table>
-							</li>
-							<li class="mui-table-view-cell" ><h4>全程运动员</h4> <table  border="" cellspacing="" cellpadding="" class="runner-table"  id="allRunnerTable"></table>
-							</li>
-							<li class="mui-table-view-cell"><h4>工作人员</h4><table  border="" cellspacing="" cellpadding="" class="runner-table"  id="noRunnerTable"></li>
-					</ul>
-					<!-- <table cellspacing="" cellpadding="" class="runner-table fix-table">
-						<tr>
-							<th width="90px">分组</th>
-							<th>第一棒</th>
-							<th>第二棒</th>
-							<th>第三棒</th>
-							<th>第四棒</th>
-							<th>第五棒</th>
-						</tr>
-					</table> -->
-					
+									<li class="mui-table-view-cell"><h4>工作人员</h4><table  border="" cellspacing="" cellpadding="" class="runner-table"  id="noRunnerTable"></li>
+							</ul>
+						</div>
+					</div>
 				</div>
 				<div id="popover" class="mui-popover hover-table-menu">
 					<form class="mui-input-group change-runner-detail">
@@ -207,18 +188,8 @@
 								<label>编号</label>
 								<input type="number" class="mui-input-clear" placeholder="请输入编号" id="hoverIDInput">
 						</div>
-						<!-- <div class="mui-input-row">
-								<label>性别</label>
-								<button type="button" class="mui-btn btn-sex" id="hoverSexMale">男</button>
-								<button type="button" class="mui-btn btn-sex" id="hoverSexFemale">女</button>
-						</div>
-						<div class="mui-input-row">
-								<label>部门</label>
-								<input type="text" class="mui-input-clear" placeholder="请输入部门" id="hoverDepartmentInput">
-						</div> -->
 						<div class="mui-input-row">
 								<label>身份</label>
-								<!-- <input type="text" class="mui-input-clear" placeholder="请输入分组赛/全程赛等" id="hoverTypeInput"> -->
 								<select id="hoverTypeInput" class="hover-type-select">
 									<option value="分组赛">分组赛</option>
 									<option value="全程赛">全程赛</option>
@@ -228,10 +199,6 @@
 									<option value="观众">观众</option>
 								</select>
 						</div>
-						<!-- <div class="mui-input-row">
-								<label>谁的家属</label>
-								<input type="text" class="mui-input-clear" placeholder="无" id="hoverFamilyInput">
-						</div> -->
 						<div class="mui-button-row">
 								<button type="button" class="mui-btn mui-btn-primary" id="hoverSubmitBtn">确认</button>
 								<button type="button" class="mui-btn mui-btn-danger" id="hoverCancelBtn">取消</button>
@@ -240,7 +207,7 @@
 				</div>
 			</div>
 		</div>
-		<script src="//s.thsi.cn/js/running/20181120/mui.js"></script>
+		<script src="//s.thsi.cn/js/running/20181120/mui.min.js"></script>
 		<script src="//s.thsi.cn/js/activity/acmake/tools/vconsole.min.js"></script>
 		<script src="//s.thsi.cn/js/running/20181120/tools.js" type="text/javascript" charset="utf-8"></script>
 		<script src="//s.thsi.cn/js/running/20181120/models/api.js" type="text/javascript" charset="utf-8"></script>
