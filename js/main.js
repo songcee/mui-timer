@@ -1,23 +1,30 @@
 mui.init();
-// var userInfo = jsVanish.getVanishUserInfo();
-var clientname = '李晓栋';
+try {
+	var userInfo = jsVanish.getVanishUserInfo();
+	console.log(userInfo)
+}
+catch(e) {
+	console.log(e)
+}
+var clientname = '宋策';
 var personInfo = void 0;
-var adminType = {
+var adminTypeList = {
 	'全程赛': 1, // 最低权限
-	'分组赛': 4,
+	'分组赛': 1,
 	'观众': 1,
 	'工作人员': 1,
 	'折返点计时': 2, // 最低权限 + 计时
-	'起点计时': 3, // 最低权限 + 计时 + 开始
-	'管理员': 4 // 所有权限
+	'起点计时': 3 // 最低权限 + 计时 + 开始
 };
-var admin = 1;
+var adminType = 1;
+var is_admin = 0; // 管理员拥有最高权限
 var getTimerIntervel = null;
 // 获取个人身份信息
 getPersonInfo({clientname: clientname}, function (res) {
 	if (res.errorcode == 0) {
 		personInfo = res.result;
-		admin = adminType[personInfo.single_info.type];
+		admin = adminTypeList[personInfo.single_info.type];
+		is_admin = personInfo.single_info.is_admin;
 		switch(admin) {
 			case 1: break;
 			case 2: 
@@ -26,11 +33,10 @@ getPersonInfo({clientname: clientname}, function (res) {
 			case 3: 
 				mui('#jishiMenuBtn')[0].style = 'block';
 				break;
-			case 4: 
-				mui('#jishiMenuBtn')[0].style = 'block';
-				mui('#settingMenuBtn')[0].style = 'block';
-				break;
-			default: ;
+		}
+		if (is_admin) {
+			mui('#jishiMenuBtn')[0].style = 'block';
+			mui('#settingMenuBtn')[0].style = 'block';
 		}
 		// 时间判断（赛事界面、计时界面秒表栏 判断比赛是否开始、结束）
 		getTimer();

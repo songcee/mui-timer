@@ -60,7 +60,8 @@ function renderPersonMatchInfo (res) {
 	}
 	if (res.errorcode == 0) {
 		var match_info = res.result.racing_list;
-		var match_html = '<li class="mui-table-view-divider black bggrey fb">个人赛况详情</li>';
+		var match_head = '<li class="mui-table-view-divider black bggrey fb">个人赛况详情</li>';
+		var match_html = '';
 		if (person_info.family_infos && person_info.family_infos.length > 0) {
 			match_html += '<div class="mui-segmented-control" style="width: 80%; margin: 10px 0 10px 10%;">';
 			match_html += '<a class="mui-control-item mui-active" href="#outs_'+person_info.single_info.number+'">' + person_info.single_info.name + '</a>';
@@ -114,7 +115,10 @@ function renderPersonMatchInfo (res) {
 			}
 			match_html += '</div>';
 		}
-		mui('#person_match_info')[0].innerHTML = match_html;
+		if (match_html == '') {
+			match_html = '<div style="text-align: center; padding-top: 10px;">无比赛信息</div>';
+		}
+		mui('#person_match_info')[0].innerHTML = match_head + match_html;
 	}
 }
 

@@ -3,11 +3,11 @@ function renderStopwatch (res) {
 	var now, interval = null;
 	if (res.errorcode == -1) {
 		// 比赛未开始
-		if (admin < 2) {return;}
+		if (adminType < 2 && !is_admin) {return;}
 		mui('#stopwatch_no_start')[0].innerText="尚未开始";
 		mui('#stopwatch_no_start')[0].style="block";
 		mui('#match_start')[0].style.display="none";
-		if (admin >= 3) {
+		if (adminType >= 3 || is_admin) {
 			mui('#match_start')[0].style="block";
 			mui('#match_restart')[0].style.display="none";
 			mui('#match_end')[0].style.display="none";
@@ -42,7 +42,7 @@ function renderStopwatch (res) {
 				mui('#timeTabMinute')[0].innerText = now[1];
 				mui('#timeTabSecond')[0].innerText = now[2];
 			}, 1000);
-			if (admin == 4) {
+			if (is_admin) {
 				mui('#match_start')[0].style.display="none";
 				mui('#match_restart')[0].style="block";
 				mui('#match_end')[0].style="block";
@@ -53,7 +53,7 @@ function renderStopwatch (res) {
 			mui('#stopwatch_no_start')[0].innerText="比赛结束";
 			mui('#stopwatch_no_start')[0].style="block";
 			mui('#stopwatch_start')[0].style.display="none";
-			if (admin == 4) {
+			if (is_admin) {
 				mui('#match_restart')[0].style="block";
 				mui('#match_start')[0].style.display="none";
 				mui('#match_end')[0].style.display="none";
