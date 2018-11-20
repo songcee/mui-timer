@@ -161,5 +161,5 @@ mui.ready(function() {
 	};
 	getFenzuData();
 	runderHoverEvent();
-	getFenzuData();
+	
 })

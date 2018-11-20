@@ -35,6 +35,7 @@ getPersonInfo({clientname: clientname}, function (res) {
 				break;
 		}
 		if (is_admin) {
+			getFenzuData();
 			mui('#jishiMenuBtn')[0].style = 'block';
 			mui('#settingMenuBtn')[0].style = 'block';
 		}

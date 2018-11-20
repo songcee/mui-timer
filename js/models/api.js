@@ -35,7 +35,7 @@ function modifyTeamList (params, cb) {
 	);
 }
 
-// 开始比赛接口（暂时不需要额外参数）
+// 开始比赛接口（暂时不需要额外参数）（需要参数：clientname=xxx）
 function startMatch (params, cb) {
 	mui.get(
 		'http://running.10jqka.com.cn/running/index.php?m=api&c=racing&a=start',
@@ -87,6 +87,7 @@ function getTimerList (params, cb) {
 }
 
 // 比赛计时接口
+// ——a：自动计时值为timing；手动计时值为modifytime；
 // ——clientname：当前登录的人员姓名（用于验证）
 // ——number：编号
 // ——all_idx：第几棒（统计全程跑的时间时需要）
@@ -94,7 +95,7 @@ function getTimerList (params, cb) {
 // ——time：手动修改的时间
 function timing (params, cb) {
 	mui.get(
-		'http://running.10jqka.com.cn/running/index.php?m=api&c=racing&a=timing',
+		'http://running.10jqka.com.cn/running/index.php?m=api&c=racing',
 		params,
 		function(data){
 			cb && cb(data);
