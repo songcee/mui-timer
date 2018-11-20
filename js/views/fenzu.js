@@ -159,6 +159,7 @@ mui.ready(function() {
 	mui('#settingMenuBtn')[0].onclick=function() {
 		getFenzuData();
 	};
+	getFenzuData();
 	runderHoverEvent();
 	getFenzuData();
 })

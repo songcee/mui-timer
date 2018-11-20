@@ -104,7 +104,7 @@
 	transition: all 3s linear;
 	width:20px;
 	height:27px;
-	background: url(../images/runner.gif) no-repeat;
+	background: url(//i.thsi.cn/images/running/20181120/runner.gif) no-repeat;
 }
 .icon-paobu-name{
 	position: absolute;
@@ -135,7 +135,7 @@
  * 排行榜
  */
 .podium-area{
-		background: url(../images/podium.png) no-repeat;
+		background: url(//i.thsi.cn/images/running/20181120/podium.png) no-repeat;
 		background-position: bottom;
 		background-size: 100% 60%;
 		width:95%;
