@@ -211,7 +211,7 @@ mui('#timeStartGroup, #timeHalfGroup').on('tap', '.mui-btn', function(e){
 				　　return false;	
 				} else {
 					// @todo 此处需要添加提交正确的时间方法
-					params.time = '2018-11-20 ' + data.value;
+					params.time = formatDate(new Date(), 'yyyy-MM-dd') + ' ' + data.value;
 					params.a = 'modifytime';
 					timing(params, function (res) {
 						if (res.errorcode == 0) {
@@ -257,8 +257,10 @@ document.getElementById('time_scroll_wrapper').addEventListener('scroll', functi
 	}
 	if (transformY < -114) {
 		document.getElementsByClassName('view_timer_stick')[0].style="position: absolute; top: " + (-transformY - 124) + "px";
+		document.getElementsByClassName('view_timer_stick')[1].style="position: absolute; top: " + (-transformY - 124) + "px";
 	} else {
 		document.getElementsByClassName('view_timer_stick')[0].style="position: relative; top: 0;"
+		document.getElementsByClassName('view_timer_stick')[1].style="position: relative; top: 0;"
 	}
 });
 

@@ -5,7 +5,7 @@ mui('.mui-scroll-wrapper').scroll({
 var vConsole = new VConsole();
 var clientname = '';
 try {
-	var userInfo = jsVanish.getVanishUserInfo();
+	var userInfo = eval('(' + jsVanish.getVanishUserInfo() +')');
 	clientname = userInfo.ClientName;
 }
 catch(e) {
