@@ -6,7 +6,7 @@ try {
 catch(e) {
 	console.log(e)
 }
-var clientname = '宋策';
+var clientname = '李晓栋';
 var personInfo = void 0;
 var adminTypeList = {
 	'全程赛': 1, // 最低权限

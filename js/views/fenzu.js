@@ -7,6 +7,7 @@ function getFenzuData(){
 // 	});
 	// console.log(allList)
 	getTeamList({},function(response){
+		window.TEAMDATA = response.result;
 		mui('#teamRunnerTable')[0].innerHTML=renderTableData(response.result.team_runners,{filterColor:true});
 		mui('#allRunnerTable')[0].innerHTML=renderTableData(response.result.all_runners);
 		mui('#noRunnerTable')[0].innerHTML=renderNoRunnerTableData(response.result.no_runners);
@@ -159,7 +160,5 @@ mui.ready(function() {
 	mui('#settingMenuBtn')[0].onclick=function() {
 		getFenzuData();
 	};
-	getFenzuData();
 	runderHoverEvent();
-	
 })

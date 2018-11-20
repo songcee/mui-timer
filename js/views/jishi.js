@@ -25,9 +25,7 @@ function renderStopwatch (res) {
 			mui('#stopwatch_start')[0].innerHTML='<span id="timeTabHour">'+now[0]+'</span>:<span id="timeTabMinute">'+now[1]+'</span>:<span id="timeTabSecond">'+now[2]+'</span>';
 			mui('#stopwatch_start')[0].style="block";
 			clearInterval(interval);
-			console.log(interval)
 			interval = setInterval(function () {
-				console.log(now);
 				now[2] = Number(now[2]) + 1 < 10 ? '0' + (Number(now[2]) + 1) : Number(now[2]) + 1;
 				if (now[2] == '60') {
 					now[2] = '00';
