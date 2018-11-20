@@ -229,6 +229,7 @@ mui('#timeStartGroup, #timeHalfGroup').on('tap', '.mui-btn', function(e){
 	}
 	this.classList.add('mui-btn-outlined');
 	this.innerText = '统计中';
+	var self = this;
 	timing(params, function (res) {
 		if (res.errorcode == 0) {
 			mui('.timing_' + time_type + '_' + (all_idx || team_idx) + '_' + num).each(function (i, val) {
@@ -238,6 +239,8 @@ mui('#timeStartGroup, #timeHalfGroup').on('tap', '.mui-btn', function(e){
 				val.children[1].innerText = renderHMS(res.result);
 			});
 		} else {
+			self.classList.remove('mui-btn-outlined');
+			self.innerText = '到达';
 			mui.toast('计时失败，失败原因：' + res.errormsg)
 		}
 	});

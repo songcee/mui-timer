@@ -155,9 +155,10 @@ function renderTableData(data,param){
 
 
 
-mui.ready(function(){
-	mui('#settingMenuBtn')[0].onclick=function(){
-		getFenzuData()
+mui.ready(function() {
+	mui('#settingMenuBtn')[0].onclick=function() {
+		getFenzuData();
 	};
 	runderHoverEvent();
+	getFenzuData();
 })
