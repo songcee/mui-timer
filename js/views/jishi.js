@@ -1,6 +1,7 @@
+var interval = null;
 // 渲染秒表及开始结束按钮
 function renderStopwatch (res) {
-	var now, interval = null;
+	var now;
 	if (res.errorcode == -1) {
 		// 比赛未开始
 		if (adminType < 2 && !is_admin) {return;}
@@ -26,6 +27,7 @@ function renderStopwatch (res) {
 			clearInterval(interval);
 			console.log(interval)
 			interval = setInterval(function () {
+				console.log(now);
 				now[2] = Number(now[2]) + 1 < 10 ? '0' + (Number(now[2]) + 1) : Number(now[2]) + 1;
 				if (now[2] == '60') {
 					now[2] = '00';
@@ -211,7 +213,8 @@ mui('#timeStartGroup, #timeHalfGroup').on('tap', '.mui-btn', function(e){
 				　　return false;	
 				} else {
 					// @todo 此处需要添加提交正确的时间方法
-					params.time = '2018-11-25 ' + data.value;
+					params.time = '2018-11-20 ' + data.value;
+					params.a = 'modifytime';
 					timing(params, function (res) {
 						if (res.errorcode == 0) {
 							mui('.timing_' + time_type + '_' + (all_idx || team_idx) + '_' + num).each(function (i, val) {
@@ -230,6 +233,7 @@ mui('#timeStartGroup, #timeHalfGroup').on('tap', '.mui-btn', function(e){
 	this.classList.add('mui-btn-outlined');
 	this.innerText = '统计中';
 	var self = this;
+	params.a = 'timing';
 	timing(params, function (res) {
 		if (res.errorcode == 0) {
 			mui('.timing_' + time_type + '_' + (all_idx || team_idx) + '_' + num).each(function (i, val) {
