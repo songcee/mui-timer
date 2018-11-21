@@ -8,7 +8,7 @@ function getPaihangList(){
 		var runnerEl = mui('#paihangRunnerList')[0].parentNode;
 		runnerEl.innerHTML='<h4>个人排行榜(男)</h4><ul class="mui-table-view" id="paihangRunnerList"></ul><h4>个人排行榜(女)</h4><ul class="mui-table-view" id="paihangFemaleList"></ul>';
 		mui('#paihangRunnerList')[0].innerHTML = renderPaihangList(data.result.boy_res,{id:'number',type:'self'});
-		mui('#paihangFemaleList')[0].innerHTML = renderPaihangList(data.result.gril_res,{id:'number',type:'self'});
+		mui('#paihangFemaleList')[0].innerHTML = renderPaihangList(data.result.girl_res,{id:'number',type:'self'});
 		mui('#paihangAllList')[0].innerHTML = renderPaihangList(data.result.all_res,{id:'number',type:'all'});
 		mui.each(mui('.saishi-paihang-ul'),function(index,item){
 			item.setAttribute('style','display:block');
