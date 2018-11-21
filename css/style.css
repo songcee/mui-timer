@@ -269,10 +269,10 @@ body{
 
 .time-table-tr {
 	position: relative;
-    overflow: hidden;
-    padding: 0 15px;
-	height: 43px;
-	line-height: 43px;
+  overflow: hidden;
+  padding: 0 15px;
+	height: 48px;
+	line-height: 48px;
 	background: #fff;
 	border-bottom: 1px solid #c8c7cc;
     -webkit-touch-callout: none;
@@ -425,22 +425,34 @@ body{
 	margin-left:-140px;
 	top: 15%;
   position: fixed;
-	font-size: 12px;
-	padding-bottom: 10px;
+	font-size: 14px;
 }
 .hover-table-menu input{
-	font-size: 12px;
+	font-size: 14px;
 }
 .hover-table-menu .hover-type-select{
 	line-height: 20px;
-	font-size: 12px;
+	font-size: 14px;
 	background: transparent;
 }
 .hover-table-menu .hover-type-select option{
 	line-height: 20px;
 }
+.mui-input-group{
+	border-radius: 7px;
+}
+.mui-input-group:before{
+	height: 0px;
+}
+.mui-input-group:after{
+	height: 0px;
+}
 .mui-input-row{
 	line-height: 20px;
+}
+.mui-input-row label{
+	line-height: 20px;
+	padding: 10px 15px;
 }
 .change-runner-detail .btn-sex{
 	float: left;
