@@ -5,7 +5,10 @@ function getSaishiData(response){
 function getPaihangList(){
 	getRank({},function(data){
 		mui('#paihangTeamList')[0].innerHTML = renderPaihangList(data.result.team_res,{id:'team',type:'team'});
-		mui('#paihangRunnerList')[0].innerHTML = renderPaihangList(data.result.runner_res,{id:'number',type:'self'});
+		var runnerEl = mui('#paihangRunnerList')[0].parentNode;
+		runnerEl.innerHTML='<h4>个人排行榜(男)</h4><ul class="mui-table-view" id="paihangRunnerList"></ul><h4>个人排行榜(女)</h4><ul class="mui-table-view" id="paihangFemaleList"></ul>';
+		mui('#paihangRunnerList')[0].innerHTML = renderPaihangList(data.result.boy_res,{id:'number',type:'self'});
+		mui('#paihangFemaleList')[0].innerHTML = renderPaihangList(data.result.gril_res,{id:'number',type:'self'});
 		mui('#paihangAllList')[0].innerHTML = renderPaihangList(data.result.all_res,{id:'number',type:'all'});
 		mui.each(mui('.saishi-paihang-ul'),function(index,item){
 			item.setAttribute('style','display:block');
@@ -113,7 +116,7 @@ function renderPaihangList(data,param){
 }
 function numberToName(id,type){
 	if(type=='self'){
-		return window.TEAMDATA.team_runners[Math.ceil(id/5)][(Number(id%5)!=0?Number(id%5)+1:5)]['name']
+		return window.TEAMDATA.team_runners[Math.ceil(id/5)][(Number(id%5)!=0?Number(id%5):5)]['name']
 	}else{
 		for(var key in window.TEAMDATA.all_runners){
 			if(window.TEAMDATA.all_runners[key][1]['number']==id){
