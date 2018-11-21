@@ -65,7 +65,7 @@ function renderPersonMatchInfo (res) {
 	}
 	if (res.errorcode == 0) {
 		var match_info = res.result.racing_list;
-		var match_head = '<li class="mui-table-view-divider black bggrey fb">个人赛况详情</li>';
+		var match_head = '<div class="mui-table-view-divider black bggrey fb">个人赛况详情</div>';
 		var match_html = '';
 		if (person_info.family_infos && person_info.family_infos.length > 0) {
 			match_html += '<div class="mui-segmented-control" style="width: 80%; margin: 10px 0 10px 10%;">';

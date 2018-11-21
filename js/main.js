@@ -2,7 +2,7 @@ mui.init();
 mui('.mui-scroll-wrapper').scroll({
 	deceleration: 0.001 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
 });
-var vConsole = new VConsole();
+// var vConsole = new VConsole();
 var clientname = '';
 try {
 	var userInfo = eval('(' + jsVanish.getVanishUserInfo() +')');
@@ -18,7 +18,7 @@ var adminTypeList = {
 	'分组赛': 1,
 	'观众': 1,
 	'工作人员': 1,
-	'折返点计时': 2, // 最低权限 + 计时
+	'折返计时': 2, // 最低权限 + 计时
 	'起点计时': 3 // 最低权限 + 计时 + 开始
 };
 var adminType = 1;
@@ -29,6 +29,8 @@ getPersonInfo({clientname: clientname}, function (res) {
 	if (res.errorcode == 0) {
 		personInfo = res.result;
 		admin = adminTypeList[personInfo.single_info.type];
+		// console.log(personInfo.single_info.type)
+		// console.log(admin)
 		is_admin = personInfo.single_info.is_admin;
 		switch(admin) {
 			case 1: break;
@@ -36,6 +38,7 @@ getPersonInfo({clientname: clientname}, function (res) {
 				mui('#jishiMenuBtn')[0].style = 'block';
 				break;
 			case 3: 
+				console.log(1)
 				mui('#jishiMenuBtn')[0].style = 'block';
 				break;
 		}

@@ -2,6 +2,13 @@
 	top: 0.7em;
 	bottom: inherit !important;
 }
+body{
+	position: fixed;
+  height: 100%;
+  width: 100%;
+	top: 0;
+	left: 0;
+}
 
 * {
 	touch-action: none;
@@ -240,11 +247,24 @@
 .stopwatch-title {
 	text-align: center;
 	font-weight: normal;
+	height: 18px;
+	line-height: 18px;
 }
 
 .stopwatch-item {
 	text-align: center;
 	margin-top: 10px;
+	height: 36px;
+	line-height: 36px;
+}
+
+#segmentedControl{
+	height: 40px;
+	line-height: 40px;
+}
+
+#segmentedControl a{
+	height: 38px;
 }
 
 .time-table-tr {

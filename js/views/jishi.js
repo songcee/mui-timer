@@ -94,14 +94,14 @@ function renderTimerList (res) {
 				<div class="mui-col-sm-3 mui-col-xs-12">全程跑</div>\
 				<div class="mui-col-sm-3 mui-col-xs-12" time="'+number+'">'+(hasTime(end_time)?renderHMS(end_time):'')+'</div>\
 				<div class="mui-col-sm-6 mui-col-xs-12 tar">\
-					'+number+'号<button class="mui-btn '+(hasTime(end_time)?'':'mui-btn-primary')+' vam ml15" num="'+number+'" all_idx="'+all_idx+'" time_type="end">'+(hasTime(end_time)?'已到达':'到达')+'</button>\
+					'+number+'号<button class="mui-btn '+(hasTime(end_time)?'':'mui-btn-primary')+' vam ml15" num="'+number+'" all_idx="'+all_idx+'" time_type="end" '+(hasTime(end_time)?'href="#timePopover"':'')+'>'+(hasTime(end_time)?'已到达':'到达')+'</button>\
 				</div>\
 			</div>';
 			html.half[times] += '<div class="mui-row time-table-tr timing_return_'+all_idx+'_'+number+'">\
 				<div class="mui-col-sm-3 mui-col-xs-12">全程跑</div>\
 				<div class="mui-col-sm-3 mui-col-xs-12" time="'+number+'">'+(hasTime(return_time)?renderHMS(return_time):'')+'</div>\
 				<div class="mui-col-sm-6 mui-col-xs-12 tar">\
-					'+number+'号<button class="mui-btn '+(hasTime(return_time)?'':'mui-btn-primary')+' vam ml15" num="'+number+'" all_idx="'+all_idx+'" time_type="return">'+(hasTime(return_time)?'已到达':'到达')+'</button>\
+					'+number+'号<button class="mui-btn '+(hasTime(return_time)?'':'mui-btn-primary')+' vam ml15" num="'+number+'" all_idx="'+all_idx+'" time_type="return" '+(hasTime(return_time)?'href="#timePopover"':'')+'>'+(hasTime(return_time)?'已到达':'到达')+'</button>\
 				</div>\
 			</div>';
 		}
@@ -120,14 +120,14 @@ function renderTimerList (res) {
 				<div class="mui-col-sm-3 mui-col-xs-12">第'+data.team_runners[num][times]['team']+'组</div>\
 				<div class="mui-col-sm-3 mui-col-xs-12" time="'+number+'">'+(hasTime(end_time)?renderHMS(end_time):'')+'</div>\
 				<div class="mui-col-sm-6 mui-col-xs-12 tar">\
-					'+number+'号<button class="mui-btn '+(hasTime(end_time)?'':'mui-btn-primary')+' vam ml15" num="'+number+'" team_idx="'+team_idx+'" time_type="end">'+(hasTime(end_time)?'已到达':'到达')+'</button>\
+					'+number+'号<button class="mui-btn '+(hasTime(end_time)?'':'mui-btn-primary')+' vam ml15" num="'+number+'" team_idx="'+team_idx+'" time_type="end" '+(hasTime(end_time)?'href="#timePopover"':'')+'>'+(hasTime(end_time)?'已到达':'到达')+'</button>\
 				</div>\
 			</div>';
 			html.half[times] += '<div class="mui-row time-table-tr timing_return_'+team_idx+'_'+number+'">\
 				<div class="mui-col-sm-3 mui-col-xs-12">第'+data.team_runners[num][times]['team']+'组</div>\
 				<div class="mui-col-sm-3 mui-col-xs-12" time="'+number+'">'+(hasTime(return_time)?renderHMS(return_time):'')+'</div>\
 				<div class="mui-col-sm-6 mui-col-xs-12 tar">\
-					'+number+'号<button class="mui-btn '+(hasTime(return_time)?'':'mui-btn-primary')+' vam ml15" num="'+number+'" team_idx="'+team_idx+'" time_type="return">'+(hasTime(return_time)?'已到达':'到达')+'</button>\
+					'+number+'号<button class="mui-btn '+(hasTime(return_time)?'':'mui-btn-primary')+' vam ml15" num="'+number+'" team_idx="'+team_idx+'" time_type="return" time_type="end" '+(hasTime(return_time)?'href="#timePopover"':'')+'>'+(hasTime(return_time)?'已到达':'到达')+'</button>\
 				</div>\
 			</div>';
 		}
@@ -200,32 +200,44 @@ mui('#timeStartGroup, #timeHalfGroup').on('tap', '.mui-btn', function(e){
 		params.all_idx = all_idx;
 	}
 	if (!this.classList.contains('mui-btn-primary')) {
-		mui.prompt('请输入正确时间：','格式：HH:MM:SS','修改时间',['取消','确认'],function (data) {
-			if (data.index == 0) {
-				return;
-			} else {
-				var regExp1 = new RegExp(/^(20|21|22|23|[0-1]\d):[0-5]\d:[0-5]\d$/);
-				var regExp2 = new RegExp(/^(20|21|22|23|[0-1]\d)\uff1a[0-5]\d\uff1a[0-5]\d$/);
-				if(!regExp1.test(data.value) && !regExp2.test(data.value)){
-				　　mui.alert("时间格式不正确，正确格式为：HH:MM:SS");
-				　　return false;	
-				} else {
-					// @todo 此处需要添加提交正确的时间方法
-					params.time = formatDate(new Date(), 'yyyy-MM-dd') + ' ' + data.value;
-					params.a = 'modifytime';
-					timing(params, function (res) {
-						if (res.errorcode == 0) {
-							mui('.timing_' + time_type + '_' + (all_idx || team_idx) + '_' + num).each(function (i, val) {
-								// @todo 添加渲染到达时间的逻辑
-								val.children[1].innerText = renderHMS(res.result);
-							});
-						} else {
-							mui.toast('计时失败，失败原因：' + res.errormsg)
-						}
+		var dtPicker = new mui.DtPicker({type: 'time'}); 
+		dtPicker.show(function (selectItems) { 
+			params.time = formatDate(new Date(), 'yyyy-MM-dd') + ' ' + selectItems.text + ':00';
+			params.a = 'modifytime';
+			timing(params, function (res) {
+				if (res.errorcode == 0) {
+					mui('.timing_' + time_type + '_' + (all_idx || team_idx) + '_' + num).each(function (i, val) {
+						val.children[1].innerText = selectItems.text + ':00';
 					});
+				} else {
+					mui.toast('计时失败，失败原因：' + res.errormsg)
 				}
-			}
-		},'div')
+			});
+		})
+// 		mui.prompt('请输入正确时间：','格式：HH:MM:SS','修改时间',['取消','确认'],function (data) {
+// 			if (data.index == 0) {
+// 				return;
+// 			} else {
+// 				var regExp1 = new RegExp(/^(20|21|22|23|[0-1]\d):[0-5]\d:[0-5]\d$/);
+// 				var regExp2 = new RegExp(/^(20|21|22|23|[0-1]\d)\uff1a[0-5]\d\uff1a[0-5]\d$/);
+// 				if(!regExp1.test(data.value) && !regExp2.test(data.value)){
+// 				　　mui.alert("时间格式不正确，正确格式为：HH:MM:SS");
+// 				　　return false;	
+// 				} else {
+// 					params.time = formatDate(new Date(), 'yyyy-MM-dd') + ' ' + data.value;
+// 					params.a = 'modifytime';
+// 					timing(params, function (res) {
+// 						if (res.errorcode == 0) {
+// 							mui('.timing_' + time_type + '_' + (all_idx || team_idx) + '_' + num).each(function (i, val) {
+// 								val.children[1].innerText = renderHMS(res.result);
+// 							});
+// 						} else {
+// 							mui.toast('计时失败，失败原因：' + res.errormsg)
+// 						}
+// 					});
+// 				}
+// 			}
+// 		},'div')
 		return;
 	}
 	this.classList.add('mui-btn-outlined');
@@ -237,13 +249,19 @@ mui('#timeStartGroup, #timeHalfGroup').on('tap', '.mui-btn', function(e){
 			mui('.timing_' + time_type + '_' + (all_idx || team_idx) + '_' + num).each(function (i, val) {
 				val.children[2].children[0].classList.remove('mui-btn-primary');
 				val.children[2].children[0].innerText = '已到达';
-				// @todo 添加渲染到达时间的逻辑
+				val.children[2].children[0].setAttribute('href', '#timePopover')
 				val.children[1].innerText = renderHMS(res.result);
 			});
+		} else if (res.errorcode == -2) {
+			mui.toast('计时失败，失败原因：' + res.errormsg);
+			self.classList.add('mui-btn-outlined');
+			self.classList.remove('mui-btn-primary');
+			self.innerText = '已到达';
+			self.setAttribute('href', '#timePopover')
 		} else {
 			self.classList.remove('mui-btn-outlined');
 			self.innerText = '到达';
-			mui.toast('计时失败，失败原因：' + res.errormsg)
+			mui.toast('计时失败，失败原因：' + res.errormsg);
 		}
 	});
 });
@@ -257,10 +275,14 @@ document.getElementById('time_scroll_wrapper').addEventListener('scroll', functi
 	}
 	if (transformY < -114) {
 		document.getElementsByClassName('view_timer_stick')[0].style="position: absolute; top: " + (-transformY - 124) + "px";
+		document.getElementById('timeHalfGroup').style="padding-top: 40px;";
 		document.getElementsByClassName('view_timer_stick')[1].style="position: absolute; top: " + (-transformY - 124) + "px";
+		document.getElementById('timeStartGroup').style="padding-top: 40px;";
 	} else {
-		document.getElementsByClassName('view_timer_stick')[0].style="position: relative; top: 0;"
-		document.getElementsByClassName('view_timer_stick')[1].style="position: relative; top: 0;"
+		document.getElementsByClassName('view_timer_stick')[0].style="position: relative; top: 0;";
+		document.getElementById('timeHalfGroup').style="padding-top: 0;";
+		document.getElementsByClassName('view_timer_stick')[1].style="position: relative; top: 0;";
+		document.getElementById('timeStartGroup').style="padding-top: 0;";
 	}
 });
 
