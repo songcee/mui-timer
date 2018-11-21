@@ -191,6 +191,17 @@ mui('#timeStartGroup, #timeHalfGroup').on('tap', '.mui-btn', function(e){
 	var all_idx = this.getAttribute("all_idx"); // 棒次 （只有全程赛有这个概念）
 	var team_idx = this.getAttribute("team_idx"); // 棒次 （只有分组赛有这个概念）
 	var time_type = this.getAttribute("time_type"); // 半程计时点还是起点计时点
+	if (time_type == 'return') {
+		if (adminType != 2 && is_admin != 1) {
+			mui.toast('你没有该操作权限');
+			return;
+		}
+	} else if (time_type == 'end') {
+		if (adminType != 3 && is_admin != 1) {
+			mui.toast('你没有该操作权限');
+			return;
+		}
+	}
 	params = {
 		number: num,
 		time_type: time_type,

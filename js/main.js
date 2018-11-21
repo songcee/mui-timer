@@ -28,17 +28,14 @@ var getTimerIntervel = null;
 getPersonInfo({clientname: clientname}, function (res) {
 	if (res.errorcode == 0) {
 		personInfo = res.result;
-		admin = adminTypeList[personInfo.single_info.type];
-		// console.log(personInfo.single_info.type)
-		// console.log(admin)
+		adminType = adminTypeList[personInfo.single_info.type];
 		is_admin = personInfo.single_info.is_admin;
-		switch(admin) {
+		switch(adminType) {
 			case 1: break;
 			case 2: 
 				mui('#jishiMenuBtn')[0].style = 'block';
 				break;
 			case 3: 
-				console.log(1)
 				mui('#jishiMenuBtn')[0].style = 'block';
 				break;
 		}
