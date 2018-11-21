@@ -3,12 +3,6 @@
 	bottom: inherit !important;
 }
 
-body{
-	position: fixed;
-    height: 100%;
-    width: 100%;
-}
-
 * {
 	touch-action: none;
 }
@@ -79,6 +73,7 @@ body{
 .saishi-nostart-ul{
 	display: none;
 	text-align: center;
+	height:100%;
 }
 .icon-saishi{
 	color: red;
@@ -142,6 +137,10 @@ body{
 /**
  * 未开始跑步
  */
+#saishiTab .mui-scroll,
+#saishiTab .mui-table-view{
+	min-height:100%;
+}
 .loading-bg{
 	background:#62d7ac;
 	position: fixed;
@@ -342,8 +341,9 @@ body{
 	border:1px solid lightskyblue;
 	line-height: 30px;
 	box-sizing: border-box;
-	font-size: 12px;
+	font-size: 14px;
 }
+
 .fix-table{
 	position: fixed;
 	top: 43px;
@@ -355,7 +355,6 @@ body{
 }
 .fix-table th{
 	border: 1px solid lightskyblue;
-	
 }
 .legend-list{
 	list-style: none;
@@ -387,6 +386,10 @@ body{
 .runner-table th{
 	text-align: center;
 	line-height: 20px;
+	white-space: nowrap;
+}
+.work-table td{
+	line-height: 40px;
 }
 .runner-table .whole-journey-td{
 	background: #F0cD4E;
