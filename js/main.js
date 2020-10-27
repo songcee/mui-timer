@@ -10,7 +10,8 @@ try {
 }
 catch(e) {
 	console.log(e)
-	clientname = '李晓栋';
+	mui.alert('请在手机vanish中使用哦！^_^');
+	// clientname = '李晓栋';
 }
 var personInfo = void 0;
 var adminTypeList = {
@@ -24,38 +25,40 @@ var adminTypeList = {
 var adminType = 1;
 var is_admin = 0; // 管理员拥有最高权限
 var getTimerIntervel = null;
-// 获取个人身份信息
-getPersonInfo({clientname: clientname}, function (res) {
-	if (res.errorcode == 0) {
-		personInfo = res.result;
-		adminType = adminTypeList[personInfo.single_info.type];
-		is_admin = personInfo.single_info.is_admin;
-		switch(adminType) {
-			case 1: break;
-			case 2: 
+if (clientname !== '') {
+	// 获取个人身份信息
+	getPersonInfo({clientname: clientname}, function (res) {
+		if (res.errorcode == 0) {
+			personInfo = res.result;
+			adminType = adminTypeList[personInfo.single_info.type];
+			is_admin = personInfo.single_info.is_admin;
+			switch(adminType) {
+				case 1: break;
+				case 2: 
+					mui('#jishiMenuBtn')[0].style = 'block';
+					break;
+				case 3: 
+					mui('#jishiMenuBtn')[0].style = 'block';
+					break;
+			}
+			if (is_admin) {
+				getFenzuData();
 				mui('#jishiMenuBtn')[0].style = 'block';
-				break;
-			case 3: 
-				mui('#jishiMenuBtn')[0].style = 'block';
-				break;
+				mui('#settingMenuBtn')[0].style = 'block';
+			}
+			// 时间判断（赛事界面、计时界面秒表栏 判断比赛是否开始、结束）
+			getTimer();
+			// 获取比赛计时列表
+			getTimerList();
+			
+			getTimerIntervel = setInterval(function () {
+				getTimer({}, function (res) {
+					if (res.errorcode == 0 && hasTime(res.result.end_time)) {
+						clearInterval(getTimerIntervel);
+					}
+				});
+				getTimerList()
+			}, 60000);
 		}
-		if (is_admin) {
-			getFenzuData();
-			mui('#jishiMenuBtn')[0].style = 'block';
-			mui('#settingMenuBtn')[0].style = 'block';
-		}
-		// 时间判断（赛事界面、计时界面秒表栏 判断比赛是否开始、结束）
-		getTimer();
-		// 获取比赛计时列表
-		getTimerList();
-		
-		getTimerIntervel = setInterval(function () {
-			getTimer({}, function (res) {
-				if (res.errorcode == 0 && hasTime(res.result.end_time)) {
-					clearInterval(getTimerIntervel);
-				}
-			});
-			getTimerList()
-		}, 60000);
-	}
-});
+	});
+}

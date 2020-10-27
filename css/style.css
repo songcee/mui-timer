@@ -461,3 +461,11 @@ body{
 .mui-content .mui-table-view.group-table-area{
 	margin-top:0;
 }
+@media only screen and (-webkit-device-pixel-ratio: 3) and (device-height: 812px) and (device-width: 375px) {
+  .mui-bar-tab {
+    padding-bottom: 44px;
+    background: #FFFFFF;
+  }
+	.mui-scroll-wrapper{
+		bottom: 94px;
+}
